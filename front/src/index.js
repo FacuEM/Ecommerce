@@ -10,4 +10,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-console.log("gonza secades probando esta verga");
+console.log("gonza secades probando ");

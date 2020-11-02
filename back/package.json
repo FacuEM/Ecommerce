@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-back",
+  "version": "1.0.0",
+  "description": "Ecommerce Back",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FacuEM/Ecommerce.git"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

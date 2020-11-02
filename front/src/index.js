@@ -5,7 +5,9 @@ const { Provider } = require("react-redux");
 import Main from "./containers/Main";
 
 ReactDOM.render(
-  <Main />,
-
+  <div>
+  <Main />
+  {console.log("Hola")}
+  </div>,
   document.getElementById("root")
 );

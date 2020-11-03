@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const cookieParser = require('cookieParser')
+const cookieParser = require('cookie-parser')
 const passport = require("passport");
 const sessions = require("express-session");
+const localStrategy = require("passport-local").Strategy;
 
 app.use(express.static("public"));
 app.use(express.json());

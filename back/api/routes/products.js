@@ -3,9 +3,21 @@ const router = require("express").Router();
 const { Product } = require("../../models");
 
 router.get("/products", (req, res) => {
-  Product.findAll()
-    .then((products) => res.send(products))
-    .catch((err) => console.log(err));
+  if (req.query.name) {
+    Product.findAll({
+      where: {
+        name: req.query.name,
+      },
+    })
+      .then((products) => {
+        res.send(products);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    Product.findAll()
+      .then((products) => res.send(products))
+      .catch((err) => console.log(err));
+  }
 });
 
 router.get("/:id", (req, res) => {

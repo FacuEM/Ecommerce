@@ -11,6 +11,7 @@
     "url": "git+https://github.com/FacuEM/Ecommerce.git"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.5",

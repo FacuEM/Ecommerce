@@ -1,9 +1,10 @@
 import React from "react"
+import { Link } from 'react-router-dom';
 
 export default ({}) => (
     <div>
     <img src=""/>
-    <button>Register</button>
+    <Link to="/register"><button>Register</button></Link>
     <button>Login</button>
     <button>Logout</button>
     <form>

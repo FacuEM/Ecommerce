@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from "react-redux"
 import {fetchProducts} from '../../redux/actionCreators/searchCreator'
+import Products from '../components/Products'
 
 class NavbarContainer extends React.Component {
   constructor() {
     super();
+    this.state = {
+      value: ''
+    }
 
-this.handleClick = this.handleClick.bind(this)
 this.inputHandler = this.inputHandler.bind(this)
 } 
 
@@ -14,15 +17,15 @@ this.inputHandler = this.inputHandler.bind(this)
 
 inputHandler(e) {
   e.preventDefault()
-  this.props.fetchProducts(e.target.value)
+  this.props.fetchProducts(this.state.value)
 }
 
 render() {
     return ( 
       <div>
-        <form onSubmit={this.inputHandler}>
-          <input type="text"/>
-          <button></button>
+        <form onSubmit={(e) =>this.inputHandler(e)}>
+          <input type="text" onChange={(e) => this.setState({value: e.target.value})}/>
+          <Products products={this.props.products}/>
         </form>
       </div>
     );
@@ -30,7 +33,9 @@ render() {
 }
 
 const mapStateToProps = function(state) {
-  return {};
+  return {
+    products: state.products
+  };
 };
 
 const mapDispatchToProps = function(dispatch){

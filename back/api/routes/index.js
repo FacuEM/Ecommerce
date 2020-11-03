@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-// Modelo de user
+const {User}=require('../../models')
 
 router.post("/register", (req, res) => {
   User.create(req.body)

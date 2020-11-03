@@ -71,7 +71,7 @@ app.get("/*", (req, res) => {
 });
 
 
-db.sync({force:false})
+db.sync({force:true})
   .then(()=>{
     app.listen(3004, () => console.log("Escuchando en puerto 3004"));
   })

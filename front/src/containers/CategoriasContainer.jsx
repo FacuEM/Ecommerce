@@ -1,9 +1,8 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Cart from "../components/Cart"
+import Categorias from '../components/Categorias';
 import { connect } from "react-redux"
 
-class NavbarContainer extends React.Component {
+class CategoriasContainer extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -14,8 +13,7 @@ class NavbarContainer extends React.Component {
 render() {
     return (
       <div>
-      <Navbar/>
-      <Cart/>
+      <Categorias/>
       </div>
     );
   }
@@ -29,4 +27,4 @@ const mapDispatchToProps = function(dispatch){
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriasContainer);

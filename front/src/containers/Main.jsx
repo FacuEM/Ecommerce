@@ -1,9 +1,15 @@
 import React from 'react'
+import { Route, Redirect, Switch } from 'react-router-dom';
+import Footer from '../components/Footer';
+import NavbarContainer from "../containers/NavbarContainer"
 
 export default function Main() {
   return (
     <div>
-      <h1>Estas funcionando?</h1>
+      <NavbarContainer component={NavbarContainer}/>
+      <Switch>
+      </Switch>
+      <Footer component={Footer}/>
     </div>
   )
 }

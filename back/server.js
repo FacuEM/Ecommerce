@@ -1,9 +1,13 @@
 const express = require("express");
 const path = require("path");
+const db = require("./db");
 const api = require("./api/routes");
+const User = require("./models/user");
 
 const app = express();
-const cookieParser = require('cookie-parser')
+
+// Passport
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const sessions = require("express-session");
 const localStrategy = require("passport-local").Strategy;
@@ -11,7 +15,7 @@ const localStrategy = require("passport-local").Strategy;
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 
 app.use(
   sessions({
@@ -62,11 +66,12 @@ passport.deserializeUser(function (id, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use("/api", api);
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public", "index.html"));
 });
 
-app.listen(3004, () => console.log("Escuchando en puerto 3004"));
+db.sync({ force: false }).then(() => {
+  app.listen(3004, () => console.log("Escuchando en puerto 3004"));
+});

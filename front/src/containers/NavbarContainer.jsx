@@ -1,28 +1,29 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Cart from "../components/Cart"
 import { connect } from "react-redux"
+import {fetchProducts} from '../../redux/actionCreators/searchCreator'
 
 class NavbarContainer extends React.Component {
   constructor() {
     super();
-    this.state = {};
-    
-this.handleClick = this.handleClick.bind(this)
 
+this.handleClick = this.handleClick.bind(this)
+this.inputHandler = this.inputHandler.bind(this)
 } 
 
 //Lógica del Navbar y del carrito
 
-handleClick(e){
-
+inputHandler(e) {
+  e.preventDefault()
+  this.props.fetchProducts(e.target.value)
 }
 
 render() {
-    return (
+    return ( 
       <div>
-      <Navbar handleClick={this.handleClick}/>
-      <Cart/>
+        <form onSubmit={this.inputHandler}>
+          <input type="text"/>
+          <button></button>
+        </form>
       </div>
     );
   }
@@ -33,7 +34,7 @@ const mapStateToProps = function(state) {
 };
 
 const mapDispatchToProps = function(dispatch){
-  return {}
+  return {fetchProducts : (products) => dispatch(fetchProducts(products))}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);

@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const db = require("./db");
 const api = require("./api/routes");
+const morgan = require("morgan");
+
 const User = require("./models/user");
 
 const app = express();
@@ -67,6 +69,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api", api);
+app.use(morgan("tiny"));
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public", "index.html"));

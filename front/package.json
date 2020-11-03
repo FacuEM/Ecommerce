@@ -11,6 +11,7 @@
     "url": "git+https://github.com/FacuEM/Ecommerce.git"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^5.1.1",

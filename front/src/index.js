@@ -11,5 +11,3 @@ ReactDOM.render(
   </div>,
   document.getElementById("root")
 );
-
-console.log("gonza secades probando esta verga");

@@ -75,6 +75,6 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public", "index.html"));
 });
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(3004, () => console.log("Escuchando en puerto 3004"));
 });

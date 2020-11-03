@@ -2,20 +2,20 @@ const router = require("express").Router();
 
 const { Product } = require("../../models");
 
-router.get((req, res) => {
+router.get("/products", (req, res) => {
   Product.findAll()
     .then((products) => res.send(products))
     .catch((err) => console.log(err));
 });
 
 router.get("/:id", (req, res) => {
-  Product.findByPk(res.params.id)
+  Product.findByPk(req.params.id)
     .then((product) => res.send(product))
     .catch((err) => console.log(err));
 });
 
 router.post("/newProduct", (req, res) => {
-  Products.create(req.body)
+  Product.create(req.body)
     .then((producto) => {
       res.status(201).send(producto);
     })
@@ -23,7 +23,7 @@ router.post("/newProduct", (req, res) => {
 });
 
 router.put("/:id/editProduct", (req, res) => {
-  Products.update(req.body, {
+  Product.update(req.body, {
     where: { id: req.params.id },
     returning: true,
     plain: true,
@@ -33,7 +33,7 @@ router.put("/:id/editProduct", (req, res) => {
 });
 
 router.delete("/:id/deleteProduct", (req, res) => {
-  Products.destroy({
+  Product.destroy({
     where: {
       id: req.params.id,
     },

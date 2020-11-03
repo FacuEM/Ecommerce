@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const api = require("./api/routes");
+
 const app = express();
 const cookieParser = require('cookie-parser')
 const passport = require("passport");
@@ -60,6 +62,8 @@ passport.deserializeUser(function (id, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use("/api", api);
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public", "index.html"));

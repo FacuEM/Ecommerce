@@ -7,14 +7,21 @@ class NavbarContainer extends React.Component {
   constructor() {
     super();
     this.state = {};
+    
+this.handleClick = this.handleClick.bind(this)
+
 } 
 
 //Lógica del Navbar y del carrito
 
+handleClick(e){
+
+}
+
 render() {
     return (
       <div>
-      <Navbar/>
+      <Navbar handleClick={this.handleClick}/>
       <Cart/>
       </div>
     );

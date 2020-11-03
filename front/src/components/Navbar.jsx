@@ -1,6 +1,6 @@
 import React from "react"
 
-export default ({}) => (
+export default ({handleClick}) => (
     <div>
     <img src=""/>
     <button>Register</button>
@@ -8,7 +8,7 @@ export default ({}) => (
     <button>Logout</button>
     <form>
     <input type="text"/>
-    <button>Buscar</button>
+    <button onClick={(e) => handleClick(e)}>Buscar</button>
     </form>
     <br/>
     </div>

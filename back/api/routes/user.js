@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-const User = require("../../models/user");
+const { User } = require("../../models");
 
 router.post("/register", (req, res) => {
   console.log("REQ BODY", req.body)

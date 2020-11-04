@@ -33,6 +33,4 @@ const mapStateToProps = (state) => ({
   products: state.products.categoryProducts.data
 });
 
-
-
 export default connect(mapStateToProps, {fetchCategories, fetchCategory} )(CategoriesContainer);

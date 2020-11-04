@@ -26,9 +26,10 @@ router.post("/logout", (req, res) => {
   res.send(401).end();
 });
 
-router.post("/me", (req, res) => {
-  if (req.user) return res.send(req.user);
-  res.send(401).end();
+router.get("/me", (req, res) => {
+  if (req.isAuthenticated()) res.send(req.user);
+  // if (req.user) return res.send(req.user);
+  else res.send({});
 });
 
 router.put("/:userId", (req, res) => {

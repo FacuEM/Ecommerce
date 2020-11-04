@@ -1,7 +1,7 @@
-const S=require('sequelize')
-const db=require('../db')
+const S = require("sequelize");
+const db = require("../db");
 
-class Orders extends S.Model{}
+class Orders extends S.Model {}
 
 Orders.init({
     direccion:{
@@ -10,11 +10,11 @@ Orders.init({
     metodo:{
         type:S.STRING
     },
-    creditCard:{
-        type:S.STRING,
-        validate:{
-            isCreditCard:true
-        }
+    creditCard: {
+      type: S.STRING,
+      validate: {
+        isCreditCard: true,
+      },
     },
     total:{
         type:S.INTEGER
@@ -26,4 +26,4 @@ Orders.init({
 
 },{sequelize:db,modelName:"order"})
 
-module.exports=Orders
+module.exports = Orders;

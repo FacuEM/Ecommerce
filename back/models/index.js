@@ -4,12 +4,12 @@ const Category = require("./category");
 const Review = require("./review");
 const Orders = require("./orders");
 
-
 Orders.belongsTo(User);
 Orders.belongsToMany(Product, { through: "car" });
 Product.belongsToMany(Orders, { through: "car" });
 Review.belongsTo(User);
 Review.belongsTo(Product);
+Product.belongsTo(Category);
 
 module.exports = {
   User,
@@ -18,4 +18,3 @@ module.exports = {
   Review,
   Orders,
 };
-

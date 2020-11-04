@@ -13,19 +13,17 @@ class NavbarContainer extends React.Component {
 this.inputHandler = this.inputHandler.bind(this)
 } 
 
-//Lógica del Navbar y del carrito
-
 inputHandler(e) {
   e.preventDefault()
   this.props.fetchProducts(this.state.value)
+  this.setState({value: ''})
 }
 
 render() {
-  console.log('val',this.props.products)
     return ( 
       <div>
-        <form onSubmit={(e) =>this.inputHandler(e)}>
-          <input type="text" onChange={(e) => this.setState({value: e.target.value})}/>
+        <form onSubmit={(e) => this.inputHandler(e)}>
+          <input type="text" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})}/>
           <button type='submit'>Buscar</button>
           <Products products={this.props.products.data}/>
         </form>

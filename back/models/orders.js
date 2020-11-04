@@ -19,8 +19,7 @@ Orders.init({
         }
     },
     total:{
-        type:S.INTEGER,
-        allowNull:false
+        type:S.INTEGER
     }
 
 },{sequelize:db,modelName:"order"})

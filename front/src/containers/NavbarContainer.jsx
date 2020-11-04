@@ -13,8 +13,6 @@ class NavbarContainer extends React.Component {
 this.inputHandler = this.inputHandler.bind(this)
 } 
 
-//Lógica del Navbar y del carrito
-
 inputHandler(e) {
   e.preventDefault()
   this.props.fetchProducts(this.state.value)

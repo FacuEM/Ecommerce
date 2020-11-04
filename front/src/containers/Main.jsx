@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import NavbarContainer from "../containers/NavbarContainer"
 import CategoriasContainer from "../containers/CategoriasContainer"
 import RegisterContainer from "../containers/RegisterContainer"
+import CarContainer from "../containers/carContainer"
 
 export default function Main() {
   return (
@@ -12,6 +13,7 @@ export default function Main() {
       <Switch>
         <Route exact path="/" component={CategoriasContainer}/>
         <Route path="/register" component={RegisterContainer}/>
+        <Route path="/car" component={CarContainer}/>
       </Switch>
       <Footer component={Footer}/>
     </div>

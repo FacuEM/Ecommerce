@@ -5,12 +5,10 @@ class Orders extends S.Model{}
 
 Orders.init({
     direccion:{
-        type:S.TEXT,
-        allowNull:false
+        type:S.TEXT
     },
     metodo:{
-        type:S.STRING,
-        allowNull:false,
+        type:S.STRING
     },
     creditCard:{
         type:S.STRING,
@@ -20,6 +18,10 @@ Orders.init({
     },
     total:{
         type:S.INTEGER
+    },
+    pending:{
+        type:S.BOOLEAN,
+        defaultValue:true
     }
 
 },{sequelize:db,modelName:"order"})

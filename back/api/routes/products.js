@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const { Product } = require("../../models");
 
-router.get("/products", (req, res) => {
+router.get("/", (req, res) => {
   if (req.query.name) {
     Product.findAll({
       where: {

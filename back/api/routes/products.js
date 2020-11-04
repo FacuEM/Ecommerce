@@ -19,9 +19,6 @@ router.get("/products", (req, res) => {
       })
       .catch((err) => console.log(err));
   }
-  /*   Product.findAll()
-    .then((products) => res.send(products))
-    .catch((err) => console.log(err)); */
 });
 
 router.get("/:id", (req, res) => {

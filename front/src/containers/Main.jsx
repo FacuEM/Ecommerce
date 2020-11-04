@@ -4,12 +4,11 @@ import {connect} from "react-redux"
 import Footer from '../components/Footer';
 import NavbarContainer from "../containers/NavbarContainer"
 import RegisterContainer from "../containers/RegisterContainer"
-<<<<<<< HEAD
+import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
 import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
-=======
 import CategoriesContainer from './CategoriesContainer';
->>>>>>> c1df1882f6c10e3625390e09efb9f6927ec741bb
+
 
 class Main extends React.Component {
 
@@ -30,6 +29,7 @@ class Main extends React.Component {
       <Switch>
         <Route exact path="/" component={CategoriesContainer}/>
         <Route path="/register" component={RegisterContainer}/>
+        <Route path="/car" component={CarContainer}/>
         <Route path="/login" component={LoginContainer}/>
       </Switch>
       <Footer component={Footer}/>

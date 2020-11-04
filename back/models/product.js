@@ -12,6 +12,9 @@ Product.init(
     descripcion: {
       type: S.STRING,
     },
+    image: {
+      type: S.STRING,
+    },
     stock: {
       type: S.INTEGER,
       allowNull: false,

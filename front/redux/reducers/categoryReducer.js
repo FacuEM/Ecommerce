@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  console.log("cat reducer");
   switch (action.type) {
     case FETCH_CATEGORIES:
       return { ...state, categories: action.data };

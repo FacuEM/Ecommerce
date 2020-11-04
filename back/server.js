@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const db = require("./db");
 const api = require("./api/routes");
+const morgan = require("morgan");
+
 const User = require("./models/user");
 
 const app = express();
@@ -65,16 +67,13 @@ passport.deserializeUser(function (id, done) {
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(morgan("tiny"));
 app.use("/api", api);
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public", "index.html"));
 });
 
-
-db.sync({force:true})
-  .then(()=>{
-    app.listen(3004, () => console.log("Escuchando en puerto 3004"));
-  })
-
+db.sync({ force: false }).then(() => {
+  app.listen(3004, () => console.log("Escuchando en puerto 3004"));
+});

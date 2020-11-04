@@ -1,23 +1,27 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 
 const { Product } = require("../../models");
 
 router.get("/products", (req, res) => {
+  let likeQuery = `%${req.query.name}%`;
+  console.log(likeQuery);
   if (req.query.name) {
     Product.findAll({
       where: {
-        name: req.query.name,
+        name: {
+          [Op.like]: likeQuery,
+        },
       },
     })
       .then((products) => {
         res.send(products);
       })
       .catch((err) => console.log(err));
-  } else {
-    Product.findAll()
-      .then((products) => res.send(products))
-      .catch((err) => console.log(err));
   }
+  /*   Product.findAll()
+    .then((products) => res.send(products))
+    .catch((err) => console.log(err)); */
 });
 
 router.get("/:id", (req, res) => {

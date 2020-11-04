@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
 
-const { Product } = require("../../models");
+const { Product, Category } = require("../../models");
 
 router.get("/products", (req, res) => {
   let likeQuery = `%${req.query.name}%`;
@@ -19,14 +19,21 @@ router.get("/products", (req, res) => {
       })
       .catch((err) => console.log(err));
   }
-  /*   Product.findAll()
-    .then((products) => res.send(products))
-    .catch((err) => console.log(err)); */
 });
 
 router.get("/:id", (req, res) => {
   Product.findByPk(req.params.id)
     .then((product) => res.send(product))
+    .catch((err) => console.log(err));
+});
+
+router.get("/categories/:category", (req, res) => {
+  Product.findAll({
+    where: {
+      categoryId: req.params.category,
+    },
+  })
+    .then((products) => res.send(products))
     .catch((err) => console.log(err));
 });
 

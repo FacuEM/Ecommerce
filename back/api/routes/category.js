@@ -8,6 +8,22 @@ router.post("/newCategory", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.get("/categories", (req, res) => {
+  Category.findAll()
+    .then((cat) => res.send(cat))
+    .catch((err) => console.log(err));
+});
+
+router.get("/:name", (req, res) => {
+  Category.findOne({
+    where: {
+      name: req.params.name,
+    },
+  })
+    .then((cat) => res.send(cat))
+    .catch((err) => console.log(err));
+});
+
 router.delete("/:id/deleteCategory", (req, res) => {
   Category.destroy({
     where: {

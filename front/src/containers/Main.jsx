@@ -3,10 +3,13 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import {connect} from "react-redux"
 import Footer from '../components/Footer';
 import NavbarContainer from "../containers/NavbarContainer"
-import CategoriasContainer from "../containers/CategoriasContainer"
 import RegisterContainer from "../containers/RegisterContainer"
+<<<<<<< HEAD
 import LoginContainer from "../containers/LoginContainer"
 import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
+=======
+import CategoriesContainer from './CategoriesContainer';
+>>>>>>> c1df1882f6c10e3625390e09efb9f6927ec741bb
 
 class Main extends React.Component {
 
@@ -25,7 +28,7 @@ class Main extends React.Component {
         </form> */}
         <NavbarContainer component={NavbarContainer}/>
       <Switch>
-        <Route exact path="/" component={CategoriasContainer}/>
+        <Route exact path="/" component={CategoriesContainer}/>
         <Route path="/register" component={RegisterContainer}/>
         <Route path="/login" component={LoginContainer}/>
       </Switch>

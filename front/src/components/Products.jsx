@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Products(props) {
-  console.log('props',products)
+export default function Products({products}) {
+  console.log(products)
   return (
     <div>
        {products ? products.map((p) => <li>{p.name}</li>) : null}

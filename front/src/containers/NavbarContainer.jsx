@@ -21,11 +21,13 @@ inputHandler(e) {
 }
 
 render() {
+  console.log('val',this.props.products)
     return ( 
       <div>
         <form onSubmit={(e) =>this.inputHandler(e)}>
           <input type="text" onChange={(e) => this.setState({value: e.target.value})}/>
-          <Products products={this.props.products}/>
+          <button type='submit'>Buscar</button>
+          <Products products={this.props.products.data}/>
         </form>
       </div>
     );
@@ -34,7 +36,7 @@ render() {
 
 const mapStateToProps = function(state) {
   return {
-    products: state.products
+    products: state.products.products
   };
 };
 

@@ -7,9 +7,12 @@ import RegisterContainer from "../containers/RegisterContainer"
 import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
 import CategoriesContainer from './CategoriesContainer';
+
+
+
 import {Row,Container} from 'react-bootstrap'
 import ProductsContainer from './ProductsContainer'
-import Product from '../components/Product'
+import SingleProductContainer from './SingleProductContainer'
 
 import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
 
@@ -31,10 +34,10 @@ class Main extends React.Component {
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/car" component={CarContainer}/>
             <Route path="/login" component={LoginContainer}/>
-            <Route exact path="/products/:id" component={Product} />
+            <Route exact path="/products/:id" component={SingleProductContainer} />
             <Route path="/products" component={ProductsContainer}/>
           </Switch>
-        </Row>
+        </Row> 
       </Container>
       <Footer component={Footer}/>
     </div>

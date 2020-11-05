@@ -6,7 +6,9 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
 
     return (
     <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#">ECOMMERCE</Navbar.Brand>
+      <Link to="/">
+    <Navbar.Brand>eCOMMERce</Navbar.Brand>
+    </Link>
     <Nav className="mr-auto">
         <Link to="/"><Nav.Link href="/">Home</Nav.Link></Link>
         <Link to="/categories"><Nav.Link href="/categories">Categories</Nav.Link></Link>

@@ -6,13 +6,16 @@ import NavbarContainer from "../containers/NavbarContainer"
 import RegisterContainer from "../containers/RegisterContainer"
 import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
-import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
 import CategoriesContainer from './CategoriesContainer';
-import SingleProduct from "../components/SingleProduct"
-//css
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
+
+
+
+import {Row,Container} from 'react-bootstrap'
+import ProductsContainer from './ProductsContainer'
+import SingleProductContainer from './SingleProductContainer'
+
+import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
+
 
 class Main extends React.Component {
 
@@ -23,32 +26,28 @@ class Main extends React.Component {
   render(){
   return (
     <div>
-      {/* <form>
-      <input id="email" placeholder="Mail"></input>
-        <input id="password" placeholder="Password" type="password"></input>
-        <button>Login</button>
-        <button> Logout </button>      
-        </form> */}
-        <NavbarContainer component={NavbarContainer}/>
-      <Switch>
+      <NavbarContainer history={this.props.history}/>
       <Container>
-        <Row>
-        <Route exact path="/" component={CategoriesContainer}/>
-        </Row>
-        <Route path="/register" component={RegisterContainer}/>
-        <Route path="/car" component={CarContainer}/>
-        <Route path="/login" component={LoginContainer}/>
-        <Route path="/products/1" component={SingleProduct}/>
+        <Row className="justify-content-md-center">
+          <Switch>
+            <Route exact path="/" component={CategoriesContainer}/>
+            <Route path="/register" component={RegisterContainer}/>
+            <Route path="/car" component={CarContainer}/>
+            <Route path="/login" component={LoginContainer}/>
+            <Route exact path="/products/:id" component={SingleProductContainer} />
+            <Route path="/products" component={ProductsContainer}/>
+          </Switch>
+        </Row> 
       </Container>
-      </Switch>
       <Footer component={Footer}/>
     </div>
   )
 }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,ownProps) => {
   return {
+    history:ownProps.history,
    isLogged: (user) => dispatch(fetchIsLogged(user))
  } 
 }

@@ -1,29 +1,26 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import {Form,Button}from"react-bootstrap"
 
-export default ({handleSubmit, handleChange, clickLogout, email, password}) => (
-    <div className="row text-black">
-    <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-      <h1 className="display-4 py-2 text-truncate">Log In</h1>
-      <div className="px-2">
-          <form onSubmit={handleSubmit} className="justify-content-center">
-              <div className="form-group">
-                  <label className="sr-only">Email</label>
-                  <input id="email" type="text" className="form-control" placeholder="Mail" value={email}  onChange={handleChange}/>
-              </div>
-              <div className="form-group">
-                  <label className="sr-only">Contraseña</label>
-                  <input id="password" type="password" className="form-control"  placeholder="Password" value={password} onChange={handleChange}/>
-              </div>
-              <button type="submit" className="btn btn-dark btn-lg" >Log In</button>
-              <div style = {{width:"10px", height:"auto", display:"inline-block"}}></div>
-              <Link to="/">
-              <button type="submit" className="btn btn-dark btn-lg" onClick={clickLogout} margin="5px">Log Out </button>
-              </Link>
-          </form>
-      </div>
-    </div>
-  </div>
+export default ({handleSubmit, handleChange, email, password}) => (
+<div className="form">
+    <Form  onSubmit={handleSubmit}>
+    
+    <Form.Group controlId="formBasicEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control id="email" value={email} onChange={handleChange} type="email" placeholder="Enter email" />
+    </Form.Group>
+
+    <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control id="password" value={password} onChange={handleChange}type="password" placeholder="Password" />
+    </Form.Group>
+    
+    <Button variant="dark" type="submit">
+        Submit
+    </Button>
+    </Form>
+</div>
 )
 // style = {{width:"5px", height:"auto", display:"inline-block"}}
 

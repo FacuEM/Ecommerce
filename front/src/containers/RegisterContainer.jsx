@@ -36,6 +36,9 @@ class RegisterContainer extends React.Component {
         email: "",
         password: ""
       })
+      console.log('llega a history?', this.props)
+      
+
     }
 
 render() {
@@ -53,16 +56,18 @@ render() {
   }
 }
 
-const mapStateToProps = function(state) {
-  return {};
+const mapStateToProps = function(state,ownProps) {
+  return {history: ownProps.history};
 };
 
 const mapDispatchToProps = function(dispatch){
   return {
     createUser: (user) => {
         dispatch(createUser(user))
+      }
+      
   }
-}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);
+

@@ -1,13 +1,40 @@
 import React from "react"
 // 
 
+import {Form,Button}from"react-bootstrap"
+
 export default ({handleSubmit, handleChange, name, email, password}) => (
 
-<div className="row text-black">
+
+<div className="form">
+<Form  onSubmit={handleSubmit}>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Name</Form.Label>
+    <Form.Control id ="name" value={name}onChange= {handleChange}type="text" placeholder="Enter name" />
+  </Form.Group>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Email</Form.Label>
+    <Form.Control id ="email" value={email}onChange= {handleChange}type="email" placeholder="Enter email" />
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control id ="password" value={password}onChange= {handleChange} type="password" placeholder="Password" />
+  </Form.Group>
+  
+  <Button variant="dark" type="submit">
+    Submit
+  </Button>
+</Form>
+</div>
+
+)
+
+{/* <div className="row text-black">
   <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
     <h1 className="display-4 py-2 text-truncate">Registro</h1>
     <div className="px-2">
-        <form onSubmit={handleSubmit} className="justify-content-center">
+        <form onSubmit={handleSubmit} >
             <div className="form-group">
                 <label className="sr-only">Name</label>
                 <input id="name" type="text" className="form-control" value={name} placeholder="Name" onChange={handleChange}/>
@@ -24,31 +51,4 @@ export default ({handleSubmit, handleChange, name, email, password}) => (
         </form>
     </div>
   </div>
-</div>
-
-)
-
-// <div>
-  //   <Col >
-  //   <Form >
-  //   <Form.Group controlId="formBasicEmail">
-  //     <Form.Label>Email address</Form.Label>
-  //     <Form.Control type="email" placeholder="Enter email" />
-  //     <Form.Text className="text-muted">
-  //       We'll never share your email with anyone else.
-  //     </Form.Text>
-  //   </Form.Group>
-  
-  //   <Form.Group controlId="formBasicPassword">
-  //     <Form.Label>Password</Form.Label>
-  //     <Form.Control type="password" placeholder="Password" />
-  //   </Form.Group>
-  //   <Form.Group controlId="formBasicCheckbox">
-  //     <Form.Check type="checkbox" label="Check me out" />
-  //   </Form.Group>
-  //   <Button variant="primary" type="submit">
-  //     Submit
-  //   </Button>
-  // </Form>
-  // </Col>
-  // </div>
+</div> */}

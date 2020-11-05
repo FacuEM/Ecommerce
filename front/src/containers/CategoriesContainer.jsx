@@ -18,7 +18,6 @@ handleClick(id) {
 }
 
 render() {
-  console.log(this.props)
     return (
       <div>
          {this.props.categories ? this.props.categories.map((c) => <button onClick={() => this.handleClick(c.id)} key={c.id}>{c.name}</button>) : null}
@@ -32,7 +31,5 @@ const mapStateToProps = (state) => ({
   categories: state.categories.categories.data,
   products: state.products.categoryProducts.data
 });
-
-
 
 export default connect(mapStateToProps, {fetchCategories, fetchCategory} )(CategoriesContainer);

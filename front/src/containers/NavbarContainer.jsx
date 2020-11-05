@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux"
 import {fetchProducts} from '../../redux/actionCreators/searchCreator'
-import Products from '../components/Products'
+import ProductsContainer from '../containers/ProductsContainer'
 
 class NavbarContainer extends React.Component {
   constructor() {
@@ -25,7 +25,7 @@ render() {
         <form onSubmit={(e) => this.inputHandler(e)}>
           <input type="text" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})}/>
           <button type='submit'>Buscar</button>
-          <Products products={this.props.products.data}/>
+          <ProductsContainer products={this.props.products.data}/>
         </form>
       </div>
     );
@@ -38,8 +38,6 @@ const mapStateToProps = function(state) {
   };
 };
 
-const mapDispatchToProps = function(dispatch){
-  return {fetchProducts : (products) => dispatch(fetchProducts(products))}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);
+
+export default connect(mapStateToProps, {fetchProducts})(NavbarContainer);

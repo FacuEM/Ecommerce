@@ -6,8 +6,10 @@ import NavbarContainer from "../containers/NavbarContainer"
 import RegisterContainer from "../containers/RegisterContainer"
 import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
-import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
 import CategoriesContainer from './CategoriesContainer';
+import Product from '../components/Product'
+
+import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
 
 
 class Main extends React.Component {
@@ -27,10 +29,12 @@ class Main extends React.Component {
         </form> */}
         <NavbarContainer component={NavbarContainer}/>
       <Switch>
+      <Route exact path="/products/:id" component={Product} />
         <Route exact path="/" component={CategoriesContainer}/>
         <Route path="/register" component={RegisterContainer}/>
         <Route path="/car" component={CarContainer}/>
         <Route path="/login" component={LoginContainer}/>
+        
       </Switch>
       <Footer component={Footer}/>
     </div>

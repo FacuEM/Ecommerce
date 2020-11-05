@@ -3,15 +3,12 @@ const db = require("../db");
 
 class Orders extends S.Model {}
 
-Orders.init(
-  {
-    direccion: {
-      type: S.TEXT,
-      allowNull: false,
+Orders.init({
+    direccion:{
+        type:S.TEXT
     },
-    metodo: {
-      type: S.STRING,
-      allowNull: false,
+    metodo:{
+        type:S.STRING
     },
     creditCard: {
       type: S.STRING,
@@ -19,11 +16,14 @@ Orders.init(
         isCreditCard: true,
       },
     },
-    total: {
-      type: S.INTEGER,
+    total:{
+        type:S.INTEGER
     },
-  },
-  { sequelize: db, modelName: "order" }
-);
+    pending:{
+        type:S.BOOLEAN,
+        defaultValue:true
+    }
+
+},{sequelize:db,modelName:"order"})
 
 module.exports = Orders;

@@ -7,6 +7,8 @@ import RegisterContainer from "../containers/RegisterContainer"
 import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
 import CategoriesContainer from './CategoriesContainer';
+import {Row,Container} from 'react-bootstrap'
+import ProductsContainer from './ProductsContainer'
 import Product from '../components/Product'
 
 import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
@@ -21,29 +23,28 @@ class Main extends React.Component {
   render(){
   return (
     <div>
-      {/* <form>
-      <input id="email" placeholder="Mail"></input>
-        <input id="password" placeholder="Password" type="password"></input>
-        <button>Login</button>
-        <button> Logout </button>      
-        </form> */}
-        <NavbarContainer component={NavbarContainer}/>
-      <Switch>
-      <Route exact path="/products/:id" component={Product} />
-        <Route exact path="/" component={CategoriesContainer}/>
-        <Route path="/register" component={RegisterContainer}/>
-        <Route path="/car" component={CarContainer}/>
-        <Route path="/login" component={LoginContainer}/>
-        
-      </Switch>
+      <NavbarContainer history={this.props.history}/>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Switch>
+            <Route exact path="/" component={CategoriesContainer}/>
+            <Route path="/register" component={RegisterContainer}/>
+            <Route path="/car" component={CarContainer}/>
+            <Route path="/login" component={LoginContainer}/>
+            <Route exact path="/products/:id" component={Product} />
+            <Route path="/products" component={ProductsContainer}/>
+          </Switch>
+        </Row>
+      </Container>
       <Footer component={Footer}/>
     </div>
   )
 }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,ownProps) => {
   return {
+    history:ownProps.history,
    isLogged: (user) => dispatch(fetchIsLogged(user))
  } 
 }

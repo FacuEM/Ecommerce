@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import React from 'react';
+import Products from '../components/Products';
+import {connect} from 'react-redux'
 
-export default class ProductsContainer extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loading: true
+
+
+const mapStateToProps = (state,ownProps) =>({
+    products: state.products.products.data,
+})
+const mapDispatchToProps = dispatch =>({
+})
+
+class  ProductsContainer extends React.Component {
+    
+
+    render(){
+        return <Products 
+                    products={this.props.products}
+                />
     }
-  }
-
-  render() {
-    const {products} = this.props
-    return (
-      <div>
-       {products ? products.map((p) => 
-       <div key={p.id}>
-         <h2>{p.name}</h2>
-         <p>${p.price}</p>
-         <Link to={`/products/${p.id}`}> Ver mas </Link>
-       </div>) : null}
-      </div>
-    )
-  }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer)

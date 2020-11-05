@@ -18,6 +18,12 @@ router.get("/products", (req, res) => {
         res.send(products);
       })
       .catch((err) => console.log(err));
+  } else {
+    Product.findAll()
+      .then((products) => {
+        res.send(products);
+      })
+      .catch((err) => console.log(err));
   }
 });
 

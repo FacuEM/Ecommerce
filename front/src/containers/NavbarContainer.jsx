@@ -40,11 +40,6 @@ render() {
         user={this.props.user}
         clickLogout={this.clickLogout}
         />
-        {/* <form onSubmit={(e) => this.inputHandler(e)}>
-          <input type="text" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})}/>
-          <button type='submit'>Buscar</button>
-          <Products products={this.props.products.data}/>
-        </form> */}
       </div>
     );
   }
@@ -65,5 +60,6 @@ const mapDispatchToProps = function(dispatch,ownProps){
   }
 
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);

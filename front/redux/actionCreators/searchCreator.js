@@ -19,6 +19,12 @@ export const fetchProducts = (input) => (dispatch) => {
   });
 };
 
+export const fetchProduct = (id) => (dispatch) => {
+  axios.get(`/api/products/${id}`).then((prod) => {
+    dispatch(fetchProductCreator(prod));
+  });
+};
+
 export const fetchCategories = () => (dispatch) => {
   axios.get("/api/category/categories").then((categories) => {
     dispatch(fetchCategoriesCreator(categories));

@@ -1,0 +1,14 @@
+.card-img {
+  height: 18rem;
+  padding: 3px;
+}
+
+.card {
+  height: 23rem;
+  margin-top: 20px;
+  width: 20rem;
+}
+
+.boton {
+  margin-left: 5px;
+}

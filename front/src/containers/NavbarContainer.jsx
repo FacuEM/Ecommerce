@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux"
 import {fetchProducts} from '../../redux/actionCreators/searchCreator'
 import Navbar from '../components/Navbar'
-import {logOutUser} from "../../redux/actionCreators/loginUserCreator"
+import {logout} from "../../redux/actionCreators/userValidation"
 
 class NavbarContainer extends React.Component {
   constructor() {
@@ -27,7 +27,7 @@ hanledValue(value){
   this.setState({value})
 }
 clickLogout(){
-  this.props.logOutUser()
+  this.props.logout()
   }
 
 render() {
@@ -37,7 +37,7 @@ render() {
         hanledValue={this.hanledValue}
         inputHandler={this.inputHandler}
         value={this.state.value}
-        user={this.props.user}
+        user={this.props.isLogged}
         clickLogout={this.clickLogout}
         />
       </div>
@@ -48,7 +48,7 @@ render() {
 const mapStateToProps = function(state) {
   return {
     products: state.products.products,
-    user:state.login //se usara para definir que botones se ven dependiendo si se esta logueado o no
+    isLogged: state.isLogged.logged //se usara para definir que botones se ven dependiendo si se esta logueado o no
   };
 };
 
@@ -56,7 +56,7 @@ const mapDispatchToProps = function(dispatch,ownProps){
   return {
     history:ownProps.history, //objeto proporcionado por react en el main para poder redireccionar
     fetchProducts : (products) => dispatch(fetchProducts(products)),
-    logOutUser: () => dispatch(logOutUser())
+    logout: () => dispatch(logout())
   }
 
 }

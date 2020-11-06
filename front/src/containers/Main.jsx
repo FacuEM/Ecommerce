@@ -8,19 +8,17 @@ import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
 import CategoriesContainer from './CategoriesContainer';
 
-
-
 import {Row,Container} from 'react-bootstrap'
 import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 
-import {fetchIsLogged} from "../../redux/actionCreators/loginUserCreator"
+import {fetchUser} from "../../redux/actionCreators/userValidation"
 
 
 class Main extends React.Component {
 
   componentDidMount() {
-    this.props.isLogged()
+    this.props.fetchUser()
   }
 
   render(){
@@ -48,7 +46,7 @@ class Main extends React.Component {
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     history:ownProps.history,
-   isLogged: (user) => dispatch(fetchIsLogged(user))
+    fetchUser: (user) => dispatch(fetchUser(user))
  } 
 }
 

@@ -24,7 +24,7 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
    
     {user.id ? 
     (<>
-    <Link to="/car"><Button variant="outline-light"><CartDash/></Button></Link>
+    <Link to="/car"><Button variant="outline-light" className="mr-2"><CartDash/></Button></Link>
     <Button variant="outline-danger" className="mr-2" onClick={clickLogout}>Logout</Button>
     </>)
     :

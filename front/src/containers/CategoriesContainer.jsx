@@ -2,6 +2,7 @@ import React from 'react';
 import {Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {fetchCategories, fetchCategory} from '../../redux/actionCreators/searchCreator'
+import Products from '../components/Products'
 
 
 class CategoriesContainer extends React.Component {
@@ -21,11 +22,12 @@ render() {
     return (
       <div>
          {this.props.categories ? this.props.categories.map((c) => <button onClick={() => this.handleClick(c.id)} key={c.id}>{c.name}</button>) : null}
-         {this.props.products ? this.props.products.map((p) => <li key={p.id}>{p.name}</li>) : null}
+         {this.props.products ? <Products products={this.props.products}/> : null}
       </div>
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
   categories: state.categories.categories.data,

@@ -9,18 +9,21 @@ import {
 const fetchProductCreator = (data) => ({ type: FETCH_PRODUCT, data });
 const fetchProductsCreator = (data) => ({ type: FETCH_PRODUCTS, data });
 
+
 const fetchCategoriesCreator = (data) => ({ type: FETCH_CATEGORIES, data });
 
 const fetchCategoryCreator = (data) => ({ type: FETCH_CATEGORY, data });
 
 export const fetchProducts = (input) => (dispatch) => {
+  if(!input){
+    dispatch(fetchProductsCreator(''))
+  }
   axios.get(`/api/products/products/?name=${input}`).then((prods) => {
     dispatch(fetchProductsCreator(prods));
   });
 };
 
 export const fetchProduct = (id) => (dispatch) => {
-  console.log("ID ACTION CREATOR", id);
   axios
     .get(`/api/products/${id}`)
     .then((res) => res.data)

@@ -8,7 +8,8 @@ class NavbarContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: ''
+      value: '',
+      errorText : ''
     }
 
 this.inputHandler = this.inputHandler.bind(this)
@@ -24,7 +25,11 @@ inputHandler(e) {
 }
 
 hanledValue(value){
-  this.setState({value})
+  if(value){
+  return this.setState({value})
+  } else {
+  return this.setState({errorText : 'Busqueda incorrecta'})
+  }
 }
 clickLogout(){
   this.props.logout()
@@ -34,6 +39,7 @@ render() {
     return ( 
       <div>
         <Navbar
+        errorText={this.state.errorText}
         hanledValue={this.hanledValue}
         inputHandler={this.inputHandler}
         value={this.state.value}

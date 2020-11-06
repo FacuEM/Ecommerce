@@ -28,6 +28,7 @@ hanledValue(value){
 }
 clickLogout(){
   this.props.logout()
+  this.props.history.push("/")
   }
 
 render() {

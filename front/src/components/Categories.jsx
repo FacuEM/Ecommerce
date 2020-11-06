@@ -1,10 +1,21 @@
 import React from 'react'
+import {Card} from 'react-bootstrap'
 
-export default function Categories(props) {
+export default ({categoriesP})=> {
     return (
-        <div>
-            <p>Categoria</p>
-           {/*  {props.categories ? props.categories.map((c) => <button onClick={() => } key={c.id}>{c.name}</button>) : null} */}
-        </div>
+        <>
+          {categoriesP && categoriesP.map(categori=>(
+            <Card className="bg-dark text-primary categories" key={categori.id}>
+                <Card.Img src={categori.image} alt="Card image" />
+                <Card.ImgOverlay>
+                <Card.Title>{categori.name}</Card.Title>
+                    <Card.Text>
+                    </Card.Text>
+                    <Card.Text>Last updated 3 mins ago</Card.Text>
+                </Card.ImgOverlay>
+            </Card>
+          ))
+          }
+        </>
     )
 }

@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import { Basket } from 'react-bootstrap-icons';
 
 
-export default ({productSelected}) => (
+export default ({productSelected,addProdudHandler}) => (
   <div>
     {productSelected.id && 
       <div style={{marginTop:"90px"}}className="container">
@@ -27,7 +27,7 @@ export default ({productSelected}) => (
             <br/>
             
             <div style = {{width:"10px", height:"auto", display:"inline-block"}}></div>
-            <Button variant="dark">Agregar al carrito <Basket/></Button>
+            <Button variant="dark" onClick={()=>addProdudHandler(productSelected.id)}>Agregar al carrito <Basket/></Button>
           </div>
         </div>
       </div>

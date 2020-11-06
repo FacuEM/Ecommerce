@@ -14,7 +14,6 @@ class CarContainer extends React.Component {
     }
 
   removeHandler(userId,pordID) {
-    console.log("boton")
     this.props.removeProductCar(userId,pordID)
   }
 

@@ -3,6 +3,20 @@
   padding: 3px;
 }
 
+.car-img {
+  height: 16rem;
+  width: 16rem;
+}
+
+.car-prod {
+  margin-top: 20px;
+}
+
+.car-img2 {
+  height: 10rem;
+  width: 10rem;
+}
+
 .card {
   height: 23rem;
   margin-top: 20px;
@@ -13,6 +27,23 @@
   margin-left: 5px;
 }
 
+.categories {
+  margin: 5px;
+}
+
+body {
+  background: #4cb8c4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3cd3ad,
+    #4cb8c4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3cd3ad,
+    #4cb8c4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 .form {
   margin-top: 4rem;
 }

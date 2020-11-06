@@ -3,6 +3,7 @@ import {Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {fetchCategories, fetchCategory} from '../../redux/actionCreators/searchCreator'
 import Products from '../components/Products'
+import Categories from '../components/Categories'
 
 
 class CategoriesContainer extends React.Component {
@@ -20,18 +21,26 @@ handleClick(id) {
 
 render() {
     return (
-      <div>
-         {this.props.categories ? this.props.categories.map((c) => <button onClick={() => this.handleClick(c.id)} key={c.id}>{c.name}</button>) : null}
-         {this.props.products ? <Products products={this.props.products}/> : null}
-      </div>
+      <Categories
+        categoriesP={this.props.categoriesP}
+      />
     );
   }
 }
 
 
 const mapStateToProps = (state) => ({
-  categories: state.categories.categories.data,
+  categoriesP: state.categories.categories.data,
   products: state.products.categoryProducts.data
 });
 
-export default connect(mapStateToProps, {fetchCategories, fetchCategory} )(CategoriesContainer);
+const mapDispatchToProps = function(dispatch,ownProps){
+  return {
+    fetchCategories:()=>dispatch(fetchCategories()), 
+    fetchCategory :()=> dispatch(fetchCategory()),
+   
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(CategoriesContainer);

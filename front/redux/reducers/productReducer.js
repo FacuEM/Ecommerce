@@ -6,7 +6,7 @@ const initialState = {
   categoryProducts: [],
 };
 
-export default function login(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return { ...state, products: action.data };

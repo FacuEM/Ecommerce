@@ -1,23 +1,29 @@
 import React from 'react';
 import { connect } from "react-redux"
-import {fetchOrder} from "../../redux/actionCreators/car"
+import {fetchOrder,removeProductCar} from "../../redux/actionCreators/car"
+import Cart from "../components/Cart"
 
 class CarContainer extends React.Component {
   constructor() {
     super();
-    
+      this.removeHandler=this.removeHandler.bind(this)
     } 
-
+    
     componentDidMount(){
         this.props.fetchOrder(this.props.user.id)
     }
 
-render() {
-    console.log(this.props.order)
+  removeHandler(userId,pordID) {
+    this.props.removeProductCar(userId,pordID)
+  }
+
+  render() {
     return (
-      <div>
-        <h1>user container</h1>
-      </div>
+      <Cart
+      user={this.props.user}
+      order={this.props.order}
+      removeHandler={this.removeHandler}
+      />
     );
   }
 }
@@ -25,13 +31,14 @@ render() {
 const mapStateToProps = function(state) {
   return {
       order:state.car.order,
-      user:state.login.loggedUser
+      user:state.isLogged.logged
   };
 };
 
 const mapDispatchToProps = function(dispatch){
   return {
-    fetchOrder:(userid)=>dispatch(fetchOrder(userid))
+    fetchOrder:(userid)=>dispatch(fetchOrder(userid)),
+    removeProductCar:(userId,prodId)=>dispatch(removeProductCar(userId,prodId))
   }
 }
 

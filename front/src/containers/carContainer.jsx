@@ -25,7 +25,7 @@ render() {
 const mapStateToProps = function(state) {
   return {
       order:state.car.order,
-      user:state.login.loggedUser
+      user:state.isLogged.logged
   };
 };
 

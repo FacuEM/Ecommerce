@@ -6,7 +6,7 @@ export default function Products({products}) {
   return (
     <CardDeck>
        {products && products.map(product => (   
-         <Link to={`/products/${product.id}`}><Card className='card' key={product.id}>
+         <Link to={`/products/${product.id}`} key={product.id}><Card className='card' key={product.id}>
            <Card.Img className='card-img' variant="top" src={product.image} />
            <Card.Body>
             <Card.Title>{product.name}</Card.Title>

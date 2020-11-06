@@ -1,12 +1,16 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import {Navbar,Nav,Form,Button,FormControl} from 'react-bootstrap'
+import {CartDash} from "react-bootstrap-icons"
+
 
 export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{ 
 
     return (
     <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#">ECOMMERCE</Navbar.Brand>
+      <Link to="/">
+    <Navbar.Brand>eCOMMERce</Navbar.Brand>
+    </Link>
     <Nav className="mr-auto">
         <Link to="/"><Nav.Link href="/">Home</Nav.Link></Link>
         <Link to="/categories"><Nav.Link href="/categories">Categories</Nav.Link></Link>
@@ -20,7 +24,7 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
    
     {user.id ? 
     (<>
-    <Link to="/car"><Button variant="outline-light">Car</Button></Link>
+    <Link to="/car"><Button variant="outline-light"><CartDash/></Button></Link>
     <Button variant="outline-danger" onClick={clickLogout}>Logout</Button>
     </>)
     :
@@ -29,6 +33,7 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
     <Link to="/login"><Button variant="outline-light">Login</Button></Link>
     </>)
     }
+    
   </Navbar>
 )}
 

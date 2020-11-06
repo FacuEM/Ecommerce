@@ -32,7 +32,7 @@ class CarContainer extends React.Component {
 const mapStateToProps = function(state) {
   return {
       order:state.car.order,
-      user:state.login
+      user:state.isLogged.logged
   };
 };
 

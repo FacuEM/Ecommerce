@@ -1,8 +1,9 @@
 import React from 'react';
 import Register from "../components/Register"
 import { connect } from "react-redux"
-import {fetchLoggedUser, logOutUser} from "../../redux/actionCreators/loginUserCreator"
+import {login} from "../../redux/actionCreators/userValidation"
 import Login from '../components/Login';
+// import {fetchLoggedUser} from "../../redux/actionCreators/loginUserCreator"
 
 class LoginContainer extends React.Component {
   constructor() {
@@ -28,11 +29,12 @@ class LoginContainer extends React.Component {
   
     handleSubmit(evt) {
       evt.preventDefault();
-      this.props.fetchLoggedUser(this.state)
+      this.props.login(this.state)
       this.setState({
         email: "",
         password: ""
       })
+      this.props.history.push('/')
     }
 
     clickLogout(){
@@ -40,6 +42,7 @@ class LoginContainer extends React.Component {
     }
 
 render() {
+  console.log('login' , this.props)
     return (
       <div>
       <Login
@@ -54,19 +57,7 @@ render() {
   }
 }
 
-const mapStateToProps = function(state) {
-  return {};
-};
 
-const mapDispatchToProps = function(dispatch){
-  return {
-    fetchLoggedUser: (user) => {
-        dispatch(fetchLoggedUser(user))
-    },
-    logOutUser: () => {
-        dispatch(logOutUser())
-  }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+
+export default connect(null, {login})(LoginContainer);

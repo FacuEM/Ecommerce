@@ -14,15 +14,19 @@ const fetchCategoriesCreator = (data) => ({ type: FETCH_CATEGORIES, data });
 const fetchCategoryCreator = (data) => ({ type: FETCH_CATEGORY, data });
 
 export const fetchProducts = (input) => (dispatch) => {
-  axios.get(`/api/products/products/?name=${input}`).then((prods) => {
+  axios.get(`/api/products/?name=${input}`).then((prods) => {
     dispatch(fetchProductsCreator(prods));
   });
 };
 
 export const fetchProduct = (id) => (dispatch) => {
-  axios.get(`/api/products/${id}`).then((prod) => {
-    dispatch(fetchProductCreator(prod));
-  });
+  console.log("ID ACTION CREATOR", id);
+  axios
+    .get(`/api/products/${id}`)
+    .then((res) => res.data)
+    .then((prod) => {
+      dispatch(fetchProductCreator(prod));
+    });
 };
 
 export const fetchCategories = () => (dispatch) => {

@@ -1,9 +1,8 @@
 import React from 'react';
-import Register from "../components/Register"
 import { connect } from "react-redux"
 import {login} from "../../redux/actionCreators/userValidation"
 import Login from '../components/Login';
-// import {fetchLoggedUser} from "../../redux/actionCreators/loginUserCreator"
+
 
 class LoginContainer extends React.Component {
   constructor() {
@@ -42,7 +41,6 @@ class LoginContainer extends React.Component {
     }
 
 render() {
-  console.log('login' , this.props)
     return (
       <div>
       <Login

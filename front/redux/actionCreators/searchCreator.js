@@ -20,7 +20,6 @@ export const fetchProducts = (input) => (dispatch) => {
 };
 
 export const fetchProduct = (id) => (dispatch) => {
-  console.log("ID ACTION CREATOR", id);
   axios
     .get(`/api/products/${id}`)
     .then((res) => res.data)
@@ -37,6 +36,6 @@ export const fetchCategories = () => (dispatch) => {
 
 export const fetchCategory = (id) => (dispatch) => {
   axios.get(`/api/products/categories/${id}`).then((products) => {
-    dispatch(fetchCategoryCreator(products));
+    dispatch(fetchCategoryCreator(products.data));
   });
 };

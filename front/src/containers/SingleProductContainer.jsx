@@ -12,12 +12,12 @@ class Product extends Component {
   componentDidMount(){
     
     this.props.fetchProduct(Number(this.props.id))
-    console.log("COMPONENT DID MOUNT",this.props.product)
+
   }
   
 
   render() {
-    console.log('THIS PROPS',this.props)
+
     return (
       <div>
         

@@ -21,12 +21,12 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
     
    
     {user.id ? 
-    <Button variant="outline-danger" onClick={clickLogout}>Logout</Button> :
-    (<>
+    null :
     <Link to="/register"><Button variant="outline-light">Register</Button></Link>
-    <Link to="/login"><Button variant="outline-light">Login</Button></Link>
-    </>)
-    }
+}
+    {user.id ? 
+    <Button variant="outline-danger" onClick={clickLogout}>Logout</Button>:
+      <Link to="/login"><Button variant="outline-light">Login</Button></Link>}
   </Navbar>
 )}
 

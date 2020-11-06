@@ -13,3 +13,18 @@ export const fetchOrder = userId => dispatch =>{
     .then((res) => res.data)
     .then((order) => dispatch(fetchOrderCreator(order)))
 }
+
+
+export const AddProductCar = (userId,prodId) => dispatch =>{
+    axios.put(`/api/car/${userId}/${prodId}`)
+    .then((res) => res.data)
+    .then((order) => dispatch(fetchOrderCreator(order)))
+}
+
+
+export const removeProductCar = (userId,prodId) => dispatch =>{
+    axios.delete(`/api/car/${userId}/${prodId}`)
+    .then(() => axios.get(`/api/car/${userId}`))
+    .then((res) => res.data)
+    .then((order) => dispatch(fetchOrderCreator(order)))
+}

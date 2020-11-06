@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import {Navbar,Nav,Form,Button,FormControl} from 'react-bootstrap'
+import {CartDash} from "react-bootstrap-icons"
+
 
 export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{ 
 
@@ -21,12 +23,17 @@ export default ({ hanledValue,inputHandler, value, user,clickLogout }) =>{
     
    
     {user.id ? 
-    null :
+    (<>
+    <Link to="/car"><Button variant="outline-light"><CartDash/></Button></Link>
+    <Button variant="outline-danger" onClick={clickLogout}>Logout</Button>
+    </>)
+    :
+    (<>
     <Link to="/register"><Button variant="outline-light">Register</Button></Link>
-}
-    {user.id ? 
-    <Button variant="outline-danger" onClick={clickLogout}>Logout</Button>:
-      <Link to="/login"><Button variant="outline-light">Login</Button></Link>}
+    <Link to="/login"><Button variant="outline-light">Login</Button></Link>
+    </>)
+    }
+    
   </Navbar>
 )}
 

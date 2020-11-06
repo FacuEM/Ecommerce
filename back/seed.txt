@@ -1,3 +1,27 @@
+let categories=[
+    {
+        name:"Accesorios para asado",
+        image:"https://images.pexels.com/photos/63746/pexels-photo-63746.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+        name:"Cacerolas  y sartenes",
+        image:"https://images.pexels.com/photos/4509047/pexels-photo-4509047.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        name:"Vajilla",
+        image:"https://images.pexels.com/photos/6305/holidays-dinner-eating-lunch.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        name:"Frascos y Botellas",
+        image:"https://images.pexels.com/photos/531446/pexels-photo-531446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        name:"Utensillos de cocina",
+        image:"https://images.pexels.com/photos/3626588/pexels-photo-3626588.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    }
+]
+
+
 let productos = [
 {
     name: "brasero",

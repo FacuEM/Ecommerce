@@ -8,6 +8,5 @@ export default combineReducers({
   products: productReducer,
   car: carReducer,
   categories: categoryReducer,
-  //facu
   isLogged: userValidationReducer,
 });

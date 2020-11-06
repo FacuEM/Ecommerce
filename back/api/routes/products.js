@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 const { Product, Category } = require("../../models");
 
-router.get("/products", (req, res) => {
+router.get("/", (req, res) => {
   let likeQuery = `%${req.query.name}%`;
   console.log(likeQuery);
   if (req.query.name) {

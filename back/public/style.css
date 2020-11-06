@@ -17,7 +17,7 @@
   width: 10rem;
 }
 
-.card {
+.cardw {
   height: 23rem;
   margin-top: 20px;
   width: 20rem;
@@ -29,6 +29,8 @@
 
 .categories {
   margin: 5px;
+  width: 20rem;
+  height: 23rem;
 }
 
 body {

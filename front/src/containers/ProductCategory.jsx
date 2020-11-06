@@ -1,41 +1,31 @@
-import React from 'react';
-import { connect } from "react-redux";
-import {fetchCategory} from '../../redux/actionCreators/searchCreator'
-import Products from '../components/Products'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {fetchCategory} from '../../redux/actionCreators/searchCreator';
+import Products from '../components/Products';
 
-
-class ProductCategory extends React.Component {
+class ProductCategory extends Component {
   constructor(props) {
-    super(props);
-    this.state = {};
-    
-} 
+    super(props)
+  }
 
-componentDidMount(){
-    console.log('Comp did mount pCategory')
+  componentDidMount(){
     this.props.fetchCategory(this.props.id)
-}
-
-render() {
-    console.log('props nuevo container', this.props)
+  }
+  render() {
     return (
-        <Products products={this.props.categoryProducts}/>   
-    );
+      <Products products={this.props.categoryProducts} />
+    )
   }
 }
 
+const mapStateToProps = (state,ownProps) =>({
+  categoryProducts: state.products.categoryProducts,
+})
+const mapDispatchToProps = (dispatch,ownProps) =>({
 
-const mapStateToProps = (state) => ({
-    categoryProducts : state.products.categoryProducts
-});
+    fetchCategory : (catId) => dispatch(fetchCategory(catId)),
+    id: ownProps.match.params.id
+  
 
-const mapDispatchToProps = function(dispatch,ownProps){
-    return {
-        fetchCategory : (catId) => dispatch(fetchCategory(catId)),
-        id : ownProps.match.params.id
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps )(ProductCategory);
-
-
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCategory)

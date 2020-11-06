@@ -36,7 +36,7 @@ export const fetchCategories = () => (dispatch) => {
 };
 
 export const fetchCategory = (id) => (dispatch) => {
-  axios.get(`/api/products/categories/${id}`).then((res) => res.data).then((products) => {
-    dispatch(fetchCategoryCreator(products));
+  axios.get(`/api/products/categories/${id}`).then((products) => {
+    dispatch(fetchCategoryCreator(products.data));
   });
 };

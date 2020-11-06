@@ -7,13 +7,13 @@ import RegisterContainer from "../containers/RegisterContainer"
 import CarContainer from "../containers/carContainer"
 import LoginContainer from "../containers/LoginContainer"
 import CategoriesContainer from './CategoriesContainer';
-import Categories from '../components/Categories'
 import {Row,Container} from 'react-bootstrap'
 import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 import ProductCategory from '../containers/ProductCategory'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
 import {fetchOrder} from '../../redux/actionCreators/car'
+
 
 
 class Main extends React.Component {
@@ -42,7 +42,7 @@ class Main extends React.Component {
             <Route path="/login" component={LoginContainer}/>
             <Route exact path="/products/:id" component={SingleProductContainer} />
             <Route path="/products" component={ProductsContainer}/>
-            <Route path="/categories/:id" component={ProductCategory}/>
+            <Route path='/categories/:id' component={ProductCategory} />
           </Switch>
         </Row> 
       </Container>

@@ -13,15 +13,23 @@ import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 
 import {fetchUser} from "../../redux/actionCreators/userValidation"
+import {fetchOrder} from '../../redux/actionCreators/car'
 
 
 class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
 
   componentDidMount() {
-    this.props.fetchUser()
+    this.props.fetchUser().then(() => {
+      if(this.props.user.id) this.props.fetchOrder(this.props.user.id)
+    })
   }
 
   render(){
+   
   return (
     <div>
       <NavbarContainer history={this.props.history}/>
@@ -43,11 +51,18 @@ class Main extends React.Component {
 }
 }
 
+const mapStateToProps = function(state) {
+  return {
+      user:state.isLogged.logged
+  };
+};
+
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     history:ownProps.history,
-    fetchUser: (user) => dispatch(fetchUser(user))
+    fetchUser: (user) => dispatch(fetchUser(user)),
+    fetchOrder:(userid)=>dispatch(fetchOrder(userid))
  } 
 }
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

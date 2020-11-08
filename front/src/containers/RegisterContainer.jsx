@@ -4,8 +4,8 @@ import { connect } from "react-redux"
 import {register} from "../../redux/actionCreators/userValidation"
 
 class RegisterContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
         name: "",
         email: "",
@@ -36,7 +36,7 @@ class RegisterContainer extends React.Component {
         email: "",
         password: ""
       })
-      this.props.history.push('/')
+      this.props.history.push('/login')
     }
 
 render() {

@@ -21,9 +21,8 @@ export const fetchUser = () => (dispatch) => {
 };
 
 export const register = (data) => (dispatch) => {
-  return axios
-    .post("/api/user/register", data)
-    .then((response) => dispatch(isLogged(response.data)));
+  return axios.post("/api/user/register", data);
+  /*  .then((response) => dispatch(isLogged(response.data))); */
 };
 
 export const logout = () => (dispatch) => {

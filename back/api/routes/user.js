@@ -1,17 +1,15 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-const { User,Orders } = require("../../models");
+const { User, Orders } = require("../../models");
 
 //al crear un usuario crea una orden de compra (carrito) asociada a ese usuario
 router.post("/register", (req, res) => {
-  console.log("REQ BODY", req.body)
   User.create(req.body)
     .then((user) => {
-      Orders.create()
-      .then((orden)=>{
-        return orden.setUser(user)
-      })
+      Orders.create().then((orden) => {
+        return orden.setUser(user);
+      });
       res.status(201).send(user);
     })
     .catch((err) => console.log(err));
@@ -23,7 +21,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 
 router.post("/logout", (req, res) => {
   req.logout();
-  res.sendStatus(200)
+  res.sendStatus(200);
 });
 
 router.get("/me", (req, res) => {

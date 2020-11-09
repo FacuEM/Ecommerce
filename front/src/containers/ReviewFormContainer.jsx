@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
+import ReviewForm from '../components/ReviewForm'
 import {addReview} from '../../redux/actionCreators/reviewCreator'
 
 class ReviewFormContainer extends Component {
@@ -34,28 +35,11 @@ render(){
 
 return (
 <div>
-<form onSubmit={this.handleSubmit}>
-  <select value={this.state.stars} onChange={this.handleSelect}>
-  <option value='1'>1</option>
-  <option value='2'>2</option>
-  <option value='3'>3</option>
-  <option value='4'>4</option>
-  <option value='5'>5</option>
-  </select>
-  <input value={this.state.content} onChange={this.handleInput}></input>
-  <button>Submit</button>
- 
-</form>
+    <ReviewForm handleSelect={this.handleSelect} handleInput={this.handleInput} handleSubmit={this.handleSubmit} stars={this.state.stars} content={this.state.content} />
 </div>
 );
 }}
 
-/* const mapStateToProps = function(state, ownProps) {
-  return {
-  id: ownProps.match.params.id,
-   
-  };
-}; */
 
 
 export default connect(null, { addReview })(ReviewFormContainer);

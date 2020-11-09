@@ -1,11 +1,24 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import {CartDash} from "react-bootstrap-icons"
 
 export default ({}) => (
-    <div className="fixed-bottom">
-        <footer className='footer mt-auto py-3 bg-dark text-white'>
-            <div className='container'>e-COMMERce <CartDash/></div>
-        </footer>
-    </div>
+    <footer className="contenedorF">
+            <div className="redes-sociales">
+                <div className="contenedor-icono">
+                    <a href="https://www.facebook.com" className="facebook" target="_blank"><i className="fab fa-facebook-f"></i></a>
+                </div>
+                <div className="contenedor-icono">
+                    <a href="https://www.instagram.com" target="_blank" className="instagram"><i className="fab fa-instagram"></i></a>
+                </div>
+                <div className="contenedor-icono">
+                    <a href="https://www.linkedin.com" target="_blank" className="linkedin"><i className="fab fa-linkedin-in"></i></a>
+                </div>
+                <div className="contenedor-icono">
+                    <a href="https://twitter.com" target="_blank" className="twitter"><i className="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div className="creado-por">
+                <p>Plataforma 5</p>
+            </div>
+    </footer>
   );

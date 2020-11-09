@@ -17,8 +17,14 @@
   width: 10rem;
 }
 
-.card {
+.cardw {
   height: 23rem;
+  margin-top: 20px;
+  width: 20rem;
+}
+
+.cardCar {
+  height: 26rem;
   margin-top: 20px;
   width: 20rem;
 }
@@ -29,21 +35,105 @@
 
 .categories {
   margin: 5px;
+  width: 20rem;
+  height: 23rem;
 }
 
 body {
-  background: #4cb8c4; /* fallback for old browsers */
+  background: #bdc3c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* background: #4cb8c4; 
   background: -webkit-linear-gradient(
     to right,
     #3cd3ad,
     #4cb8c4
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to right,
     #3cd3ad,
     #4cb8c4
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  );  */
 }
 .form {
   margin-top: 4rem;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.container {
+  min-height: 65vmin;
+}
+
+/* style footer */
+
+.redes-sociales {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.redes-sociales a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  border-radius: 100px;
+  transition: 0.3s ease all;
+  text-align: center;
+  margin: 20px;
+}
+
+.facebook {
+  background: #3b5998;
+}
+
+.instagram {
+  background: #c13584;
+}
+
+.linkedin {
+  background: #0e76a8;
+}
+
+.twitter {
+  background: #1da1f2;
+}
+
+.redes-sociales a i {
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.contenedor-icono:hover a {
+  animation: icono 0.5s ease;
+}
+
+@keyframes icono {
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+  to {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+.creado-por {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #4f000b;
 }

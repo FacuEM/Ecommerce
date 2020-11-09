@@ -7,7 +7,9 @@ import {AddProductCar} from "../../redux/actionCreators/car"
 class Product extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      addToCart : false
+    }
 
     this.addProdudHandler=this.addProdudHandler.bind(this)
   }
@@ -19,15 +21,15 @@ class Product extends Component {
   }
   addProdudHandler(prodId){
     this.props.AddProductCar(this.props.userId,prodId)
-
+    this.setState({addToCart : true})
   }
 
   render() {
 
     return (
       <div>
-        
         <SingleProduct
+         pText = {this.state.addToCart}
          productSelected = {this.props.product} 
          addProdudHandler={this.addProdudHandler}
         />

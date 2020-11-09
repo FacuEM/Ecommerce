@@ -1,42 +1,49 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import { Basket } from 'react-bootstrap-icons';
+import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap'
 
 
-export default ({productSelected,addProdudHandler}) => (
-  <div>
-    {productSelected.id && 
-      <div style={{marginTop:"90px"}}className="container">
-        <div className="row " >
-          <div className="col-md-4 card card-body">
-            <img width = "100%" height="auto" src={productSelected.image} className="thumbnail" alt="Poster" />
-          </div>
-          <div className="col-md-8">
-            <h2 className="mb-4">{(productSelected.name).toUpperCase()}</h2>
-            <ul className="list-group">
-              <li className="list-group-item">
-                <strong>Descripcion:</strong> {productSelected.descripcion}
-              </li>
-              <li className="list-group-item">
-                <strong>Stock:</strong> {productSelected.stock}
-              </li>
-              <li className="list-group-item">
-                <strong>precio</strong> {`$ ${productSelected.price},00`}
-              </li>
-            </ul>
-            <br/>
-            
-            <div style = {{width:"10px", height:"auto", display:"inline-block"}}></div>
-            <Button variant="dark" onClick={()=>addProdudHandler(productSelected.id)}>Agregar al carrito <Basket/></Button>
-          </div>
-        </div>
-      </div>
+export default ({ pText, productSelected, addProdudHandler }) => {
+
+  return (
+    <div>
+      {productSelected.id &&
+        <Container className='mt-5'>
+          <Row md="auto">
+            <Col md="auto" >
+              <Card style={{ width: "16rem" }}>
+                <Card.Img md="auto" variant="top" src={productSelected.image} />
+              </Card>
+            </Col>
+            <Col >
+              <ListGroup>
+                <ListGroup.Item>
+                  <h2>{productSelected.name.toUpperCase()}</h2>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <strong>Descripcion:</strong> {productSelected.descripcion}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <strong>Stock:</strong> {productSelected.stock}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <strong>Precio:</strong> {`$${productSelected.price},00`}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button variant="dark" onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>
+                  <br/>
+                   {pText ? <Button variant="success" disabled>
+                              {productSelected.name} agregado al carrito.
+                            </Button> : null}
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
+          <br />
+        </Container>
       }
-
     </div>
-);
+  )
+};
 
 
-  //https://tecnovortex.com/wp-content/uploads/2019/04/wallpaper-engine.jpg
-
-  //https://www.rioshopdeco.com.ar/7215-thickbox_default/tabla-madera-redonda-34cm-art-p1222571.jpg

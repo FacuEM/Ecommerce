@@ -23,6 +23,12 @@
   width: 20rem;
 }
 
+.cardCar {
+  height: 26rem;
+  margin-top: 20px;
+  width: 20rem;
+}
+
 .boton {
   margin-left: 5px;
 }
@@ -64,4 +70,70 @@ body {
 
 * {
   font-family: "Nunito", sans-serif;
+}
+
+.container {
+  min-height: 65vmin;
+}
+
+/* style footer */
+
+.redes-sociales {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.redes-sociales a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  border-radius: 100px;
+  transition: 0.3s ease all;
+  text-align: center;
+  margin: 20px;
+}
+
+.facebook {
+  background: #3b5998;
+}
+
+.instagram {
+  background: #c13584;
+}
+
+.linkedin {
+  background: #0e76a8;
+}
+
+.twitter {
+  background: #1da1f2;
+}
+
+.redes-sociales a i {
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.contenedor-icono:hover a {
+  animation: icono 0.5s ease;
+}
+
+@keyframes icono {
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+  to {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+.creado-por {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #4f000b;
 }

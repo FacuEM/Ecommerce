@@ -12,7 +12,7 @@ export default ({hanledValue, inputHandler, value, user, clickLogout }) => {
       </Link>
       <Nav className="mr-auto">
         <Link to="/"><Nav.Link href="/">Home</Nav.Link></Link>
-       {/*  <Link to="/categories"><Nav.Link href="/categories">Categories</Nav.Link></Link> */}
+        <Link to="/categories"><Nav.Link href="/categories">Categories</Nav.Link></Link>
     </Nav>
     <Form inline onSubmit={e=> inputHandler(e)}>
       <FormControl type="text" placeholder="Search" className="mr-sm-4" value={value} 

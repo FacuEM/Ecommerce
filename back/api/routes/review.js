@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const { Review, User, Product } = require("../../models");
 
-// cambiar userId para el req.user.id
-router.post("/:userId/:productId", (req, res) => {
+// req.user puede fallar
+router.post("/:productId", (req, res) => {
   User.findAll({
     where: {
-      id: req.params.userId,
+      id: req.user.id,
     },
   }).then((user) => {
     Review.create(req.body)

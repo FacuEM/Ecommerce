@@ -1,4 +1,4 @@
-import { IS_LOGGED } from "../constants";
+import { IS_LOGGED, FETCH_ERROR } from "../constants";
 import axios from "axios";
 
 export const isLogged = (user) => {
@@ -8,10 +8,18 @@ export const isLogged = (user) => {
   };
 };
 
+export const fetchError = () => {
+  return {
+    type: FETCH_ERROR,
+  };
+};
+
 export const login = (data) => (dispatch) => {
   return axios
     .post("/api/user/login", data)
-    .then((response) => dispatch(isLogged(response.data)));
+    .then((response) => dispatch(isLogged(response.data))
+    )
+    .catch(() => dispatch(fetchError()));
 };
 
 export const fetchUser = () => (dispatch) => {

@@ -5,7 +5,6 @@ const { Product, Category } = require("../../models");
 
 router.get("/", (req, res) => {
   let likeQuery = `%${req.query.name}%`;
-  console.log(likeQuery);
   if (req.query.name) {
     Product.findAll({
       where: {
@@ -14,12 +13,6 @@ router.get("/", (req, res) => {
         },
       },
     })
-      .then((products) => {
-        res.send(products);
-      })
-      .catch((err) => console.log(err));
-  } else {
-    Product.findAll()
       .then((products) => {
         res.send(products);
       })

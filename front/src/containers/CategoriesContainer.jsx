@@ -2,6 +2,7 @@ import React from 'react';
 import {Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {fetchCategories, fetchCategory} from '../../redux/actionCreators/searchCreator'
+import Products from '../components/Products'
 import Categories from '../components/Categories'
 
 
@@ -26,6 +27,7 @@ render() {
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
   categoriesP: state.categories.categories.data,

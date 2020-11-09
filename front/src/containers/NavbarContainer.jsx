@@ -8,7 +8,7 @@ class NavbarContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: ''
+      value: '',
     }
 
 this.inputHandler = this.inputHandler.bind(this)
@@ -24,8 +24,9 @@ inputHandler(e) {
 }
 
 hanledValue(value){
-  this.setState({value})
+  return this.setState({value})
 }
+
 clickLogout(){
   this.props.logout()
   this.props.history.push("/")
@@ -49,7 +50,7 @@ render() {
 const mapStateToProps = function(state) {
   return {
     products: state.products.products,
-    isLogged: state.isLogged.logged //se usara para definir que botones se ven dependiendo si se esta logueado o no
+    isLogged: state.isLogged.logged, //se usara para definir que botones se ven dependiendo si se esta logueado o no
   };
 };
 

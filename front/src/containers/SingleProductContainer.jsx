@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import {fetchProduct} from "../../redux/actionCreators/searchCreator"
 import SingleProduct from "../components/SingleProduct"
 import {AddProductCar} from "../../redux/actionCreators/car"
-import ReviewContainer from "../containers/ReviewContainer"
+import { fetchReviews} from '../../redux/actionCreators/reviewCreator'
+import ReviewFormContainer from "./ReviewFormContainer"
+import ReviewCardContainer from "./ReviewCardContainer"
 
 class Product extends Component {
   constructor(props) {
@@ -12,12 +14,13 @@ class Product extends Component {
       addToCart : false
     }
 
-    this.addProdudHandler=this.addProdudHandler.bind(this)
+    this.addProdudHandler = this.addProdudHandler.bind(this)
   }
 
   componentDidMount(){
     
     this.props.fetchProduct(Number(this.props.id))
+    this.props.fetchReviews(Number(this.props.id))
 
   }
   addProdudHandler(prodId){
@@ -34,7 +37,8 @@ class Product extends Component {
          productSelected = {this.props.product} 
          addProdudHandler={this.addProdudHandler}
         />
-        <ReviewContainer/>
+        <ReviewFormContainer id={this.props.id}/>
+        <ReviewCardContainer/>
       </div>
     )
   }
@@ -44,7 +48,9 @@ const mapDispatchToProps = function(dispatch){
   
   return {
     fetchProduct:(id)=>{dispatch(fetchProduct(id))},
-    AddProductCar: (userId,prodId) => dispatch(AddProductCar(userId,prodId))
+    AddProductCar: (userId,prodId) => dispatch(AddProductCar(userId,prodId)),
+    fetchReviews:(id) =>{dispatch(fetchReviews(id))}
+    
   }
 }
 

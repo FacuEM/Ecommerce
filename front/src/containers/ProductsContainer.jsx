@@ -8,7 +8,6 @@ const mapStateToProps = (state,ownProps) =>({
 
 class ProductsContainer extends React.Component {
     render(){
-        console.log(this.props)
         return <Products 
                     products={this.props.products}
                 />

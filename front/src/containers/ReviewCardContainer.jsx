@@ -1,25 +1,31 @@
 import React from 'react';
-import Review from "../components/Review"
-import { connect } from "react-redux"
+import ReviewCard from "../components/ReviewCard"
+import { connect } from "react-redux";
 
-class ReviewContainer extends React.Component {
+
+class ReviewCardContainer extends React.Component {
   constructor() {
     super();
     this.state = {
         contentname: "",
         stars: 0,
     };
+    
 }
-
-
 
 render() {
     return (
       <div>
-      <Review/>
+      <ReviewCard review={this.props.reviews}/>
       </div>
     );
   }
 }
 
-export default connect(null, null)(ReviewContainer);
+const mapStateToProps = function(state, ownProps) {
+  return {
+    reviews: state.reviews.reviews
+  };
+};
+
+export default connect(mapStateToProps,null)(ReviewCardContainer);

@@ -5,14 +5,14 @@ const addReviewCreator = (data) => ({ type: ADD_REVIEW, data });
 
 const fetchReviewsCreator = (data) => ({ type: FETCH_REVIEW, data });
 
-export const addReview = (id) => (dispatch) => {
+export const addReview = (id, data) => (dispatch) => {
   axios
-    .post(`/api/review/${id}`)
+    .post(`/api/review/addReview/${id}`, data)
     .then((res) => dispatch(addReviewCreator(res.data)));
 };
 
-export const fetchReviews = () => (dispatch) => {
+export const fetchReviews = (id) => (dispatch) => {
   axios
-    .get(`/api/review/`)
+    .get(`/api/review/${id}`)
     .then((res) => dispatch(fetchReviewsCreator(res.data)));
 };

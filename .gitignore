@@ -1,6 +1,8 @@
 # Bundle.js
+#Probando config de gitignore para ingorar bundle.js.map de una vez
+*.js.map
 bundle.js
-bundle.js.map
+# bundle.js.map
 
 # Logs
 logs

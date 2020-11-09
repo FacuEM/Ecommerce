@@ -1,0 +1,174 @@
+let categories=[
+    {
+        "name":"Accesorios para asado",
+        "image":"https://images.pexels.com/photos/63746/pexels-photo-63746.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+        "name":"Cacerolas  y sartenes",
+        "image":"https://images.pexels.com/photos/4509047/pexels-photo-4509047.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        "name":"Vajilla",
+        "image":"https://images.pexels.com/photos/6305/holidays-dinner-eating-lunch.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        "name":"Frascos y Botellas",
+        "image":"https://images.pexels.com/photos/531446/pexels-photo-531446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+        "name":"Utensillos de cocina",
+        "image":"https://images.pexels.com/photos/3626588/pexels-photo-3626588.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    }
+]
+
+
+let productos = [
+{
+    "name": "brasero",
+    "descripcion": "Material: Metálico enlozado; Contiene: Brasero de mesa; Asa de agarre; 4 Patitas; Bandeja acanalada; Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/2954-thickbox_default/brasero-de-mesa-art1800.jpg",
+    "stock": 5,
+    "price": 1200,
+    "categoryId": 5
+},
+{
+    "name": "espatula",
+    "descripcion": "Material: Acero inoxidable; Contiene: Espatula para parrilla; Mango madera; Presentación individual en blister de regalo",
+    "image": "https://www.rioshopdeco.com.ar/7068-thickbox_default/la-cabrera-espatula-mango-madera-p-parrilla-art-66944.jpg",
+    "stock": 8,
+    "price": 300,
+    "categoryId": 5
+},
+{
+    "name": "tabla",
+    "descripcion": "Material: Madera, Metálico; Contiene: Tabla madera bambú; ideal para asado; Asa de agarre; Dimensiones: 34 cm diámetro; Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/7215-thickbox_default/tabla-madera-redonda-34cm-art-p1222571.jpg",
+    "stock": 4,
+    "price": 1000,
+    "categoryId": 5
+},
+{
+    "name": "cacerola",
+    "descripcion": "Material: Acero inoxidable triple fondo de alta calidad; Contiene: Cacerola; Modelo: Alegra; 2 Asas de agarre; Tapa de vidrio templado; Válvula de acero; Dimensiones: 24 cm, Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/7772-thickbox_defaultarmonia-alegra-cacerola-24cm-57l-acero-inox-art-62654-248.jpg",
+    "stock": 5,
+    "price": 5000,
+    categoryId: 6
+},
+{
+    "name": "jarro hervidor",
+    "descripcion": "Material: Teflon alta calidad; Contiene: Jarro Hervidor; Modelo: París; Marca: Tramontina; Dimensiones: 12 cm; Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/2861-thickbox_default/paris-hervidor-leche-12cm-art-20540-612.jpg",
+    "stock": 3,
+    "price": 1200,
+    "categoryId": 6
+},
+{
+    "name": "sarten",
+    "descripcion": "Material: Teflon antihaderente alta calidad; Contiene: Sarten; Modelo: Loreto; Marca: Tramontina; Dimensiones: 24 cm; Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/7592-thickbox_default/loreto-sarten-teflon-24cm-art-20380-024.jpg",
+    "stock": 5,
+    "price": 1200,
+    "categoryId": 6
+},
+{
+    "name": "cuchara",
+    "descripcion": "Material: Metálico/Acero inoxidable; Contiene: Cuchara de mesa; 1 Pieza; 6 Unidades; Presentación en bolsa",
+    "image": "https://www.rioshopdeco.com.ar/5440-thickbox_default/cuchara-sopera-1-pieza-metalica-x6-en-bolsa-art-p1222719-cyber.jpg",
+    "stock": 10,
+    "price": 600,
+    "categoryId": 7
+},
+{
+    "name": "cuchillo",
+    "descripcion": "Material: Acero inoxidable; Contiene: Cuchillo para carne; Cabo madera; Marca: Tramontina; Modelo: Dynamic; Cantidad: 12 unidades; Presentación individual en blister",
+    "image": "https://www.rioshopdeco.com.ar/2850-thickbox_default/dynamic-cuchillo-p-carne-5-x12-art-22300-905.jpg",
+    "stock": 8,
+    "price": 990,
+    "categoryId": 7
+},
+{
+    "name": "cubiertos",
+    "descripcion": "Material: Acero inoxidable; Contiene: Juego de cubiertos; Modelo: Laguna; Marca: Tramontina; 24 piezas; Presentación en caja con visor",
+    "image": "https://www.rioshopdeco.com.ar/7154-thickbox_default/laguna-jgo-cubiertos-24pzas-art-66906-840.jpg",
+    "stock": 6,
+    "price": 3700,
+    "categoryId": 7
+},
+{
+    "name": "botella",
+    "descripcion": "Material: Vidrio; Contiene: Botella; Sobre relieve; Diseño: Rombo; Colores; Dimensiones: 6,5x6,5x22 cm",
+    "image": "https://www.rioshopdeco.com.ar/902-thickbox_default/botella-vidrio-relieve-rombo-65x65x22cm-art-300256.jpg",
+    "stock": 12,
+    "price": 200,
+    "categoryId": 7
+},
+{
+    "name": "dispenser",
+    "descripcion": "Material: Vidrio; Contiene: Dispenser; Modelo: Country Style; Detalle en relieve; Transparente; Canilla; Colores: Plateado/Bronce; Capacidad: 3,5 Litros; Presentación individual en caja",
+    "image": "https://www.rioshopdeco.com.ar/5797-thickbox_default/dispenser-de-vidrio-country-style-35l-art-13302.jpg",
+    "stock": 4,
+    "price": 1200,
+    "categoryId": 7
+},
+{
+    "name": "fransco",
+    "descripcion": "Material: vidrio , Contiene: frasco , Cuadrado , Manija de cuerda , Varios Colores , Medidas: 16x16x18 cm",
+    image: "https://www.rioshopdeco.com.ar/1289-thickbox_default/frasco-vidrio-cuadrado-c-manija-de-cuerda-16x16x18cm-art-400348.jpg",
+    "stock": 7,
+    "price": 700,
+    "categoryId": 7
+},
+{
+    "name": "batidor de cocina",
+    "descripcion": "Material: Metálico; Contiene: Batidor de cocina; Agarre anatómico; Dimensiones: 35 cm; Presentación individual",
+    "image": "https://www.rioshopdeco.com.ar/3888-thickbox_default/batidor-metalico-35cm-art-p1232809.jpg",
+    "stock": 7,
+    "price": 200,
+    "categoryId": 8
+},
+{
+    "name": "mortero",
+    "descripcion": "Material: Madera; Contiene: Mortero completo; Triturador incluido; Macizo; Presentación individual",
+    image: "https://www.rioshopdeco.com.ar/4140-thickbox_default/mortero-madera-art-p1222568.jpg",
+    stock: 9,
+    price: 600,
+    categoryId: 5
+},
+{
+    "name": "hielera",
+    descripcion: "Material: Vidrio; Contiene: Hielera; Pinza y manija de agarre metálica; Transparente; Dimensiones: 12x12 cm; Presentación individual en caja",
+    image: "https://www.rioshopdeco.com.ar/5796-thickbox_default/hielera-de-vidrio-con-pinza-12x12cm-art-113-02105-ad021-05gb-26-1001-art-ad021-04gb-26-1001-art-ad021-06gb-26-1001.jpg",
+    stock: 4,
+    price: 700,
+    categoryId: 5
+}
+]
+
+let user = [
+{
+    "name": "facundo",
+    email: "facu@gmail.com",
+    password: "facu"
+},
+{
+    "name": "gonzalo",
+    email: "gonzaa@gmail.com",
+    password: "gonzaa"
+},
+{
+    "name": "williams",
+    email: "williams@gmail.com",
+    password: "williams"
+},
+{
+    "name": "lucas",
+    email: "lucas@gmail.com",
+    password: "lucas"
+},
+{
+    "name": "agustina",
+    email: "agustina@gmail.com",
+    password: "agustina"
+}
+]

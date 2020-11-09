@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchProduct} from "../../redux/actionCreators/searchCreator"
 import SingleProduct from "../components/SingleProduct"
 import {AddProductCar} from "../../redux/actionCreators/car"
+import ReviewContainer from "../containers/ReviewContainer"
 
 class Product extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Product extends Component {
          productSelected = {this.props.product} 
          addProdudHandler={this.addProdudHandler}
         />
+        <ReviewContainer/>
       </div>
     )
   }

@@ -14,8 +14,7 @@ import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
 import {fetchOrder} from '../../redux/actionCreators/car'
 import Home from '../components/home'
-
-
+import ReviewContainer from "../containers/ReviewContainer"
 
 class Main extends React.Component {
   constructor(props){

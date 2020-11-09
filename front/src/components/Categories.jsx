@@ -12,7 +12,7 @@ export default ({categoriesP})=> {
                 <Card.ImgOverlay>
                  <Card.Text></Card.Text>
                 </Card.ImgOverlay>
-                <Card.Title>{categori.name}</Card.Title>
+                <Card.Title className='text-center' style={{"padding" : "15px"}}>{categori.name}</Card.Title>
             </Card>
             </Link>
           ))

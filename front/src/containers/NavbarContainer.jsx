@@ -9,7 +9,6 @@ class NavbarContainer extends React.Component {
     super();
     this.state = {
       value: '',
-      errorText : ''
     }
 
 this.inputHandler = this.inputHandler.bind(this)
@@ -25,12 +24,9 @@ inputHandler(e) {
 }
 
 hanledValue(value){
-  if(value){
   return this.setState({value})
-  } else {
-  return this.setState({errorText : 'Busqueda incorrecta'})
-  }
 }
+
 clickLogout(){
   this.props.logout()
   }
@@ -39,7 +35,6 @@ render() {
     return ( 
       <div>
         <Navbar
-        errorText={this.state.errorText}
         hanledValue={this.hanledValue}
         inputHandler={this.inputHandler}
         value={this.state.value}
@@ -54,7 +49,7 @@ render() {
 const mapStateToProps = function(state) {
   return {
     products: state.products.products,
-    isLogged: state.isLogged.logged //se usara para definir que botones se ven dependiendo si se esta logueado o no
+    isLogged: state.isLogged.logged, //se usara para definir que botones se ven dependiendo si se esta logueado o no
   };
 };
 

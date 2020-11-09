@@ -18,9 +18,9 @@ export default ({user,order,removeHandler}) => {
             style={{ width: '18rem' }}
             className="mb-2"
         >
-            <Card.Header >{user.name} Car</Card.Header>
+            <Card.Header >{user.name} Cart</Card.Header>
             <Card.Body>
-            <Card.Img variant="top"className="car-img" src="https://e7.pngegg.com/pngimages/323/161/png-clipart-computer-icons-shopping-cart-cart-angle-logo-thumbnail.png" />
+            <Card.Img variant="top"className="car-img" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" />
 
             <Card.Title>Total de compra :{totalCompra ? totalCompra : 0}$</Card.Title>
             
@@ -35,8 +35,8 @@ export default ({user,order,removeHandler}) => {
                             </Col>
                             <Col xs={8}>
                             <ListGroup variant="flush">
-                            <ListGroup.Item>{prod.name}</ListGroup.Item>
-                            <ListGroup.Item>{prod.price}</ListGroup.Item>
+                            <ListGroup.Item>Producto: {prod.name}</ListGroup.Item>
+                            <ListGroup.Item>Precio: {prod.price}</ListGroup.Item>
                             <ListGroup.Item action variant="danger" onClick={()=>removeHandler(user.id,prod.id)}>Remove</ListGroup.Item>
                             </ListGroup>
                             </Col>

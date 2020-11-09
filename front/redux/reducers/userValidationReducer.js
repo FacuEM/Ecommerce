@@ -1,8 +1,8 @@
-import { IS_LOGGED, FETCH_ERROR } from "../constants";
+import { IS_LOGGED, FETCH_ERROR, SET_ERROR } from "../constants";
 
 const initialState = {
   logged: {},
-  error: false
+  error: false,
 };
 
 export default function (state = initialState, action) {
@@ -10,7 +10,9 @@ export default function (state = initialState, action) {
     case IS_LOGGED:
       return { ...state, logged: action.payload };
     case FETCH_ERROR:
-      return {...state, error: !state.error}
+      return { ...state, error: !state.error };
+    case SET_ERROR:
+      return { ...state, error: false };
     default:
       return state;
   }

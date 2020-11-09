@@ -1,7 +1,7 @@
 import React from 'react';
 import Register from "../components/Register"
 import { connect } from "react-redux"
-import {register} from "../../redux/actionCreators/userValidation"
+import {register, setError} from "../../redux/actionCreators/userValidation"
 
 class RegisterContainer extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class RegisterContainer extends React.Component {
     this.state = {
         name: "",
         email: "",
-        password: ""
+        password: "",
+        errorState: false
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,23 +27,31 @@ class RegisterContainer extends React.Component {
     if (evt.target.id === "password"){
       this.setState({password:value})
     }
+    this.setState({errorState: false})
+    this.props.setError()
     }
   
     handleSubmit(evt) {
       evt.preventDefault();
-      this.props.register(this.state)
-      this.setState({
+      this.props.register(this.state).then(() => this.setState({
         name: "",
         email: "",
         password: ""
+      })).then(() => {
+        if(!this.props.error) {this.props.history.push('/login')}
+        else {
+          this.setState({errorState: true})
+        }
       })
-      this.props.history.push('/login')
+      
     }
 
 render() {
     return (
       <div>
       <Register
+      errorState = {this.state.errorState}
+      error = {this.props.error}
       handleSubmit={this.handleSubmit}
       handleChange={this.handleChange}
       name = {this.state.name}
@@ -54,8 +63,12 @@ render() {
   }
 }
 
+const mapStateToProps = function (state) {
+  return {
+    error: state.isLogged.error
+  };
+};
 
 
-
-export default connect(null, {register})(RegisterContainer);
+export default connect(mapStateToProps, {register, setError})(RegisterContainer);
 

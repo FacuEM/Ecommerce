@@ -1,4 +1,4 @@
-import { IS_LOGGED, FETCH_ERROR } from "../constants";
+import { IS_LOGGED, FETCH_ERROR, SET_ERROR } from "../constants";
 import axios from "axios";
 
 export const isLogged = (user) => {
@@ -14,11 +14,16 @@ export const fetchError = () => {
   };
 };
 
+export const setError = () => {
+  return {
+    type: SET_ERROR,
+  };
+};
+
 export const login = (data) => (dispatch) => {
   return axios
     .post("/api/user/login", data)
-    .then((response) => dispatch(isLogged(response.data))
-    )
+    .then((response) => dispatch(isLogged(response.data)))
     .catch(() => dispatch(fetchError()));
 };
 
@@ -29,8 +34,10 @@ export const fetchUser = () => (dispatch) => {
 };
 
 export const register = (data) => (dispatch) => {
-  return axios.post("/api/user/register", data);
-  /*  .then((response) => dispatch(isLogged(response.data))); */
+  return axios
+    .post("/api/user/register", data)
+    .then((res) => console.log(res.data))
+    .catch(() => dispatch(fetchError()));
 };
 
 export const logout = () => (dispatch) => {

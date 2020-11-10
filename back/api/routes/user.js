@@ -12,7 +12,7 @@ router.post("/register", (req, res) => {
       });
       res.status(201).send(user);
     })
-    .catch((err) => console.log(err));
+    .catch(() => res.sendStatus(401));
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {

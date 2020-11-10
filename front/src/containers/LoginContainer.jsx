@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux"
-import { login, fetchError } from "../../redux/actionCreators/userValidation"
+import { login, fetchError, setError } from "../../redux/actionCreators/userValidation"
 import Login from '../components/Login';
 
 
@@ -11,6 +11,7 @@ class LoginContainer extends React.Component {
       email: "",
       password: "",
       isLoading: false,
+      errorState: false,
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,11 +26,13 @@ class LoginContainer extends React.Component {
     if (evt.target.id === "password") {
       this.setState({ password: value })
     }
+    this.setState({errorState: false})
+    this.props.setError()
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true, errorState: true })
     this.props.login(this.state).then(() => {
       if (this.props.isLogged.id) {
         if (this.props.error) {
@@ -60,6 +63,7 @@ class LoginContainer extends React.Component {
     return (
       <div>
         <Login
+          errorState={this.state.errorState}
           error={this.props.error}
           isLoading={this.state.isLoading}
           handleSubmit={this.handleSubmit}
@@ -75,10 +79,10 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = function (state) {
   return {
-    isLogged: state.isLogged.logged, //se usara para definir que botones se ven dependiendo si se esta logueado o no
+    isLogged: state.isLogged.logged, 
     error: state.isLogged.error
   };
 };
 
 
-export default connect(mapStateToProps, { login, fetchError })(LoginContainer);
+export default connect(mapStateToProps, { login, fetchError, setError })(LoginContainer);

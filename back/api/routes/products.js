@@ -36,30 +36,4 @@ router.get("/categories/:category", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/newProduct", (req, res) => {
-  Product.create(req.body)
-    .then((producto) => {
-      res.status(201).send(producto);
-    })
-    .catch((err) => console.log(err));
-});
-
-router.put("/:id/editProduct", (req, res) => {
-  Product.update(req.body, {
-    where: { id: req.params.id },
-    returning: true,
-    plain: true,
-  })
-    .then((producto) => res.send(producto))
-    .catch((err) => console.log(err));
-});
-
-router.delete("/:id/deleteProduct", (req, res) => {
-  Product.destroy({
-    where: {
-      id: req.params.id,
-    },
-  }).then(() => res.sendStatus(204));
-});
-
 module.exports = router;

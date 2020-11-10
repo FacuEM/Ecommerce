@@ -14,7 +14,8 @@ const passport = require("passport");
 const sessions = require("express-session");
 const localStrategy = require("passport-local").Strategy;
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

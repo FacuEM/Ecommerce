@@ -12,7 +12,7 @@ import {Row,Container} from 'react-bootstrap'
 import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
-import {fetchOrder} from '../../redux/actionCreators/car'
+import {fetchCarProducts} from '../../redux/actionCreators/car'
 import Home from '../components/home'
 
 
@@ -25,7 +25,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser().then(() => {
-      if(this.props.user.id) this.props.fetchOrder(this.props.user.id)
+      if(this.props.user.id) this.props.fetchCarProducts(this.props.user.id)
     })
   }
 
@@ -41,10 +41,10 @@ class Main extends React.Component {
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/car" component={CarContainer}/>
             <Route path="/login" component={LoginContainer}/>
-            <Route exact path="/products/:id" component={SingleProductContainer} />
-            <Route path="/products" component={ProductsContainer}/>
-            <Route path='/categories/:id' component={ProductCategory} />
+            <Route exact path="/products" component={ProductsContainer}/>
+            <Route path="/products/:id" component={SingleProductContainer} />
             <Route exact path="/categories" component={CategoriesContainer}/>
+            <Route path='/categories/:id' component={ProductCategory} />
             <Redirect from="/" to="/" />
           </Switch>
         </Row> 
@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     history:ownProps.history,
     fetchUser: (user) => dispatch(fetchUser(user)),
-    fetchOrder:(userid)=>dispatch(fetchOrder(userid))
+    fetchCarProducts:(userid)=>dispatch(fetchCarProducts(userid))
  } 
 }
 

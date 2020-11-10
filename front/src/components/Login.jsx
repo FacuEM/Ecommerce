@@ -1,5 +1,5 @@
 import React from "react"
-import {Form,Button, Alert}from"react-bootstrap"
+import {Form,Button, Alert, Spinner}from"react-bootstrap"
 
 export default ({error, isLoading, handleSubmit, handleChange, email, password}) => (
 <div className="form">
@@ -15,7 +15,8 @@ export default ({error, isLoading, handleSubmit, handleChange, email, password})
     </Form.Group>
     {!error ? isLoading ? 
     <Alert variant='info'>
-    Cargando...
+    Cargando... 
+    <Spinner animation="border" variant="info" className={'spiner'}/>
     <br/>
     </Alert> 
     : null : 

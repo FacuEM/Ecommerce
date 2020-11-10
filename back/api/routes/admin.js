@@ -21,8 +21,15 @@ router.put("/users/upgrade/:id", (req, res) => {
       plain: true,
     }
   )
-    .then((user) => res.status(200).send(user))
-    .catch((err) => console.log(err));
+    .then(() => {
+      return User.findAll({});
+    })
+    .then((users) => {
+      res.send(users);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 });
 
 router.put("/users/downgrade/:id", (req, res) => {
@@ -34,7 +41,12 @@ router.put("/users/downgrade/:id", (req, res) => {
       plain: true,
     }
   )
-    .then((user) => res.status(200).send(user))
+    .then(() => {
+      return User.findAll({});
+    })
+    .then((users) => {
+      res.send(users);
+    })
     .catch((err) => console.log(err));
 });
 

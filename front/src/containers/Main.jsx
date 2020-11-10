@@ -13,11 +13,13 @@ import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
 import {fetchOrder} from '../../redux/actionCreators/car'
+
 import Home from '../components/home'
 
 //Admin
 import AdminContainer from '../containers/AdminContainer'
 import AdminUser from '../components/Admin/AdminUser'
+import { fetchUsers } from '../../redux/actionCreators/adminCreator';
 
 
 class Main extends React.Component {
@@ -30,6 +32,8 @@ class Main extends React.Component {
     this.props.fetchUser().then(() => {
       if(this.props.user.id) this.props.fetchOrder(this.props.user.id)
     })
+    
+    this.props.fetchUsers()
   }
 
   render(){
@@ -70,7 +74,8 @@ const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     history:ownProps.history,
     fetchUser: (user) => dispatch(fetchUser(user)),
-    fetchOrder:(userid)=>dispatch(fetchOrder(userid))
+    fetchOrder:(userid)=>dispatch(fetchOrder(userid)),
+    fetchUsers: ()=>dispatch(fetchUsers())
  } 
 }
 

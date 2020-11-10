@@ -1,13 +1,13 @@
 import React from "react"
 import {Row,Col,Image,ListGroup,Card,Button,Form} from "react-bootstrap"
 
-export default ({user,order,removeHandler}) => {
+export default ({user,products,removeHandler}) => {
 
     //crea una variable con la suma total de los preccios de los productos en la lista
-    if(order.id){
-        var totalCompra=order.products.reduce((x,y)=>x+y.price,0)
+    // if(order.id){
+    //     var totalCompra=order.products.reduce((x,y)=>x+y.price,0)
         
-    }
+    // }
     
     
     return (<>
@@ -22,7 +22,7 @@ export default ({user,order,removeHandler}) => {
             <Card.Body>
             <Card.Img variant="top"className="car-img" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" />
 
-            <Card.Title>Total de compra :{totalCompra ? totalCompra : 0}$</Card.Title>
+            <Card.Title>Total de compra : 0$</Card.Title>
             <Button variant="outline-success">BUY UP <i class="far fa-credit-card"></i></Button>
             
             
@@ -30,10 +30,10 @@ export default ({user,order,removeHandler}) => {
             </Card>
         </Col>
         <Col xs={8}>
-            {order.products && order.products.map(prod=>{
+            {products && products.map(prod=>{
                 return <Row className="car-prod" key={prod.id}>
                             <Col xs={4}>
-                            <Image className="car-img2" src={prod.image}  rounded />
+                            <Image className="car-img2" src={prod.product.image}  rounded />
                             </Col>
                             <Col xs={8}>
                             <ListGroup variant="flush">

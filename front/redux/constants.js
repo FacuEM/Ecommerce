@@ -6,6 +6,8 @@ export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const FETCH_CATEGORY = "FETCH_CATEGORY";
 // Order
 export const FETCH_ORDER = "FETCH_ORDER";
+export const FETCH_CAR_PRODUCTS="FETCH_CAR_PRODUCTS"
+//facu
 // User
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";

@@ -1,22 +1,26 @@
 import React from 'react';
 import ReviewCard from "../components/ReviewCard"
 import { connect } from "react-redux";
-
+import {fetchReviews} from "../../redux/actionCreators/reviewCreator"
 
 class ReviewCardContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
         contentname: "",
         stars: 0,
     };
-    
 }
+
+
 
 render() {
     return (
       <div>
-      <ReviewCard review={this.props.reviews}/>
+      <ReviewCard 
+      review={this.props.reviews}
+      user={this.props.user}
+      />
       </div>
     );
   }
@@ -24,8 +28,8 @@ render() {
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    reviews: state.reviews.reviews
+    user: state.isLogged.logged.name  
   };
 };
 
-export default connect(mapStateToProps,null)(ReviewCardContainer);
+export default connect(mapStateToProps,{ fetchReviews })(ReviewCardContainer);

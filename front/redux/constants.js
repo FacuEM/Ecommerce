@@ -18,3 +18,11 @@ export const IS_LOGGED = "IS_LOGGED";
 // Reviews
 export const ADD_REVIEW = "ADD_REVIEW";
 export const FETCH_REVIEW = "FETCH_REVIEW";
+
+// Super Admin
+// Users
+
+export const FETCH_USERS = "FETCH_USERS";
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+// Products

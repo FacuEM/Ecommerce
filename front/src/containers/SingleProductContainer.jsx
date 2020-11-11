@@ -5,23 +5,20 @@ import SingleProduct from "../components/SingleProduct"
 import {AddProductCar} from "../../redux/actionCreators/car"
 import { fetchReviews} from '../../redux/actionCreators/reviewCreator'
 import ReviewFormContainer from "./ReviewFormContainer"
-import ReviewCardContainer from "./ReviewCardContainer"
+
 
 class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addToCart : false
-    }
-
-    this.addProdudHandler = this.addProdudHandler.bind(this)
+    addToCart : false
+  }
+  this.addProdudHandler = this.addProdudHandler.bind(this)
   }
 
   componentDidMount(){
-    
     this.props.fetchProduct(Number(this.props.id))
     this.props.fetchReviews(Number(this.props.id))
-
   }
   addProdudHandler(prodId){
     this.props.AddProductCar(this.props.userId,prodId)
@@ -29,7 +26,6 @@ class Product extends Component {
   }
 
   render() {
-
     return (
       <div>
         <SingleProduct
@@ -38,7 +34,6 @@ class Product extends Component {
          addProdudHandler={this.addProdudHandler}
         />
         <ReviewFormContainer id={this.props.id}/>
-        <ReviewCardContainer/>
       </div>
     )
   }
@@ -58,7 +53,7 @@ const mapStateToProps = function(state, ownProps) {
   return {
     product: state.products.selectedProduct,
     id: ownProps.match.params.id,
-    userId:state.isLogged.logged.id
+    userId:state.isLogged.logged.id,
   };
 };
 

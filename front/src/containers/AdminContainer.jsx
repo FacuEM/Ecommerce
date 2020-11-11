@@ -15,7 +15,7 @@ class AdminContainer extends Component {
       <div>
         <h1>ADMIN PANEL</h1>
         <Link to="/admin/users">User</Link>
-        <Link to = "/admin/product">Products</Link>
+        <Link to = "/admin/products">Products</Link>
         <Link to = "/admin/categories">Categories</Link>
         <Link to = "/admin/orders">Orders</Link>
       </div>

@@ -30,7 +30,7 @@ router.get("/categories/:category", (req, res) => {
   Product.findAll({
     where: {
       categoryId: req.params.category,
-    },
+    },order:[['createdAt', 'ASC']]
   })
     .then((products) => res.send(products))
     .catch((err) => console.log(err));

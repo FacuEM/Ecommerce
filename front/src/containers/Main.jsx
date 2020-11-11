@@ -14,6 +14,7 @@ import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
 import {fetchCarProducts} from '../../redux/actionCreators/car'
 import Home from '../components/home'
+import CheckoutContainer from '../containers/CheckoutContainer'
 
 //Admin
 import AdminContainer from '../containers/AdminContainer'
@@ -44,6 +45,7 @@ class Main extends React.Component {
             <Route exact path="/admin" component={AdminContainer}/>
             <Route exact path="/admin/users" component={AdminUser}/>
             <Route path="/register" component={RegisterContainer}/>
+            <Route path="/car/checkout" component={CheckoutContainer}/>
             <Route path="/car" component={CarContainer}/>
             <Route path="/login" component={LoginContainer}/>
             <Route exact path="/products" component={ProductsContainer}/>

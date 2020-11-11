@@ -4,6 +4,7 @@ import carReducer from "../reducers/carReducer";
 import categoryReducer from "../reducers/categoryReducer";
 import userValidationReducer from "../reducers/userValidationReducer";
 import reviewReducer from "../reducers/reviewReducer";
+import adminReducer from "../reducers/adminReducer";
 
 export default combineReducers({
   products: productReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   categories: categoryReducer,
   isLogged: userValidationReducer,
   reviews: reviewReducer,
+  admin: adminReducer,
 });

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 //import AdminPanel from '../components/Admin/AdminPanel'
+import {fetchUsers} from '../../redux/actionCreators/adminCreator'
+import {connect} from 'react-redux'
 
 
-export class AdminContainer extends Component {
-
+class AdminContainer extends Component {
+  constructor(props){
+    super(props)
+  }
+ 
   render() {
     return (
       <div>
@@ -18,4 +23,4 @@ export class AdminContainer extends Component {
   }
 }
 
-export default AdminContainer
+export default connect(null,{fetchUsers})(AdminContainer)

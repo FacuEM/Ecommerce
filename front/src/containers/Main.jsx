@@ -12,6 +12,8 @@ import {Row,Container} from 'react-bootstrap'
 import ProductsContainer from './ProductsContainer'
 import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
+import {fetchOrder} from '../../redux/actionCreators/car'
+
 import {fetchCarProducts} from '../../redux/actionCreators/car'
 import Home from '../components/home'
 import CheckoutContainer from '../containers/CheckoutContainer'
@@ -19,6 +21,9 @@ import CheckoutContainer from '../containers/CheckoutContainer'
 //Admin
 import AdminContainer from '../containers/AdminContainer'
 import AdminUser from '../components/Admin/AdminUser'
+import { fetchUsers, fetchAdminProducts } from '../../redux/actionCreators/adminCreator';
+import AdminProducts from '../components/Admin/AdminProducts';
+import AdminProductsUpdate from '../components/Admin/AdminProductsUpdate';
 
 
 class Main extends React.Component {
@@ -31,6 +36,8 @@ class Main extends React.Component {
     this.props.fetchUser().then(() => {
       if(this.props.user.id) this.props.fetchCarProducts(this.props.user.id)
     })
+    this.props.fetchUsers()
+    this.props.fetchAdminProducts()
   }
 
   render(){
@@ -44,6 +51,8 @@ class Main extends React.Component {
             <Route exact path="/" component={Home}/>
             <Route exact path="/admin" component={AdminContainer}/>
             <Route exact path="/admin/users" component={AdminUser}/>
+            <Route exact path="/admin/products" component={AdminProducts}/>
+            <Route exact path="/admin/products/update/:id" component={AdminProductsUpdate}/>
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/car/checkout" component={CheckoutContainer}/>
             <Route path="/car" component={CarContainer}/>
@@ -72,6 +81,9 @@ const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     history:ownProps.history,
     fetchUser: (user) => dispatch(fetchUser(user)),
+    fetchOrder:(userid)=>dispatch(fetchOrder(userid)),
+    fetchUsers: ()=>dispatch(fetchUsers()),
+    fetchAdminProducts: ()=>dispatch(fetchAdminProducts()),
     fetchCarProducts:(userid)=>dispatch(fetchCarProducts(userid))
  } 
 }

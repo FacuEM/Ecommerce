@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { User, Product, Category, Orders } = require("../../models");
 
 router.get("/users", (req, res) => {
-  User.findAll({})
+  User.findAll({},{order:[['createdAt', 'ASC']]})
     .then((users) => {
       res.send(users);
     })
@@ -21,8 +21,15 @@ router.put("/users/upgrade/:id", (req, res) => {
       plain: true,
     }
   )
-    .then((user) => res.status(200).send(user))
-    .catch((err) => console.log(err));
+    .then(() => {
+      return User.findAll({});
+    })
+    .then((users) => {
+      res.send(users);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 });
 
 router.put("/users/downgrade/:id", (req, res) => {
@@ -34,13 +41,19 @@ router.put("/users/downgrade/:id", (req, res) => {
       plain: true,
     }
   )
-    .then((user) => res.status(200).send(user))
+    .then(() => {
+      return User.findAll({});
+    })
+    .then((users) => {
+      res.send(users);
+    })
     .catch((err) => console.log(err));
 });
 
 // mostrat los products
+
 router.get("/products", (req, res) => {
-  Product.findAll({})
+  Product.findAll({},{order:[['updatedAt', 'ASC']]})
     .then((products) => res.send(products))
     .catch((err) => console.log(err));
 });
@@ -54,11 +67,15 @@ router.post("/products/newProduct", (req, res) => {
 });
 
 router.put("/products/:id/editProduct", (req, res) => {
+  console.log(req.body)
   Product.update(req.body, {
     where: { id: req.params.id },
     returning: true,
     plain: true,
   })
+    .then(() => {
+      return Product.findByPk(req.param.id)
+    })
     .then((producto) => res.send(producto))
     .catch((err) => console.log(err));
 });

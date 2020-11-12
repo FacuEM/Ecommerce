@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import {fetchCarProducts,removeProductCar,updateCarProducts} from "../../redux/actionCreators/car"
 import Cart from "../components/Cart"
 
+
 class CarContainer extends React.Component {
   constructor() {
     super();
@@ -15,6 +16,7 @@ class CarContainer extends React.Component {
     }
 
   removeHandler(userId,pordID) {
+
     this.props.removeProductCar(userId,pordID)
   }
 

@@ -34,3 +34,6 @@ export const FETCH_ADMIN_PRODUCTS = "FETCH_ADMIN_PRODUCTS";
 // Category
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
+
+// Orders
+export const FETCH_ADMIN_ORDERS = "FETCH_ADMIN_ORDERS";

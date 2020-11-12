@@ -1,40 +1,27 @@
-/* import React, { Component } from "react";
+import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import {
-  upgradeUser,
-  downgradeUser,
-  fetchUsers
-} from "../../../redux/actionCreators/adminCreator";
+import { fetchAdminOrders } from '../../../redux/actionCreators/adminCreator'
 
-class AdminUser extends Component {
+class AdminOrders extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    this.props.fetchUsers()
+    this.props.fetchAdminOrders()
   }
   render() {
     return (
       <div>
         {this.props.orders &&
-          this.props.orders.map((user) => {
+          this.props.orders.map((order) => {
             return (
-              <div key={user.id}>
-                <h2>User Id: {user.id}</h2>
-                <p>User name :{user.name}</p>
-                <p>User email :{user.email}</p>
-                <p>Admin: {user.type ? "admin" : "not admin"}</p>
-                {user.type ? (
-                  <button onClick={() => this.props.downgradeUser(user.id)}>
-                    Downgrade user
-                  </button>
-                ) : (
-                  <button onClick={() => this.props.upgradeUser(user.id)}>
-                    Upgrade user
-                  </button>
-                )}
+              <div key={order.id}>
+                <h2>Order Id: {order.id}</h2>
+                <p>User Id:{order.userId}</p>
+                <p>Direccion: {order.direccion}</p>
+                <p>Total: {order.total}</p>
               </div>
             );
           })}
@@ -45,12 +32,8 @@ class AdminUser extends Component {
 
 const maptStateToProps = (state) => {
   return {
-    users: state.admin.users,
+    orders: state.admin.orders,
   };
 };
 
-export default connect(maptStateToProps, {
-  upgradeUser,
-  downgradeUser,
-  fetchUsers
-})(AdminUser); */
+export default connect(maptStateToProps, { fetchAdminOrders })(AdminOrders);

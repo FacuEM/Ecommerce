@@ -14,10 +14,12 @@ const fetchCategoriesCreator = (data) => ({ type: FETCH_CATEGORIES, data });
 const fetchCategoryCreator = (data) => ({ type: FETCH_CATEGORY, data });
 
 export const fetchProducts = (input) => (dispatch) => {
-  axios.get(`/api/products/?name=${input}`)
-  .then((prods) => {
-    dispatch(fetchProductsCreator(prods));
-  })
+  axios
+    .get(`/api/products/?name=${input}`)
+    .then((res) => res.data)
+    .then((prods) => {
+      dispatch(fetchProductsCreator(prods));
+    });
 };
 
 export const fetchProduct = (id) => (dispatch) => {
@@ -30,13 +32,19 @@ export const fetchProduct = (id) => (dispatch) => {
 };
 
 export const fetchCategories = () => (dispatch) => {
-  axios.get("/api/category/categories").then((categories) => {
-    dispatch(fetchCategoriesCreator(categories));
-  });
+  axios
+    .get("/api/category")
+    .then((res) => res.data)
+    .then((categories) => {
+      dispatch(fetchCategoriesCreator(categories));
+    });
 };
 
 export const fetchCategory = (id) => (dispatch) => {
-  axios.get(`/api/products/categories/${id}`).then((products) => {
-    dispatch(fetchCategoryCreator(products.data));
-  });
+  axios
+    .get(`/api/products/categories/${id}`)
+    .then((res) => res.data)
+    .then((category) => {
+      dispatch(fetchCategoryCreator(category));
+    });
 };

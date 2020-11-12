@@ -9,6 +9,7 @@ class ProductCategory extends Component {
   }
 
   componentDidMount(){
+    console.log('llega a cDM')
     this.props.fetchCategory(this.props.id)
   }
   render() {
@@ -22,10 +23,7 @@ const mapStateToProps = (state,ownProps) =>({
   categoryProducts: state.products.categoryProducts,
 })
 const mapDispatchToProps = (dispatch,ownProps) =>({
-
     fetchCategory : (catId) => dispatch(fetchCategory(catId)),
     id: ownProps.match.params.id
-  
-
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCategory)

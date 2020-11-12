@@ -54,11 +54,16 @@ class AdminProductsUpdate extends Component {
         const product = this.props.product
         return (
             <div>
-                <h1>Upgradea el producto</h1>
+                <h1>Edita el producto</h1>
                 {product ?
                     <form onSubmit={(e) => this.handleSubmit(e)}>
                         <h3>{product.name}</h3>
                         <input onChange={this.handleChange} type="text" name='name' value={this.state.name} placeholder={product.name} />
+                        <input onChange={this.handleChange} type="text" name='descripcion' value={this.state.descripcion} placeholder={product.descripcion} />
+                        <input onChange={this.handleChange} type="text" name='image' value={this.state.image} placeholder={product.image} />
+                        <input onChange={this.handleChange} type="text" name='price' value={this.state.price} placeholder={product.price} />
+                        <input onChange={this.handleChange} type="text" name='stock' value={this.state.stock} placeholder={product.stock} />
+                        <input onChange={this.handleChange} type="text" name='categoryId' value={this.state.categoryId} placeholder={product.categoryId} />
                      <button type='submit'>Actualizar</button>
                     </form> :
                     null}

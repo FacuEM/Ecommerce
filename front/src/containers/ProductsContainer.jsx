@@ -3,8 +3,12 @@ import Products from '../components/Products';
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state,ownProps) =>({
+<<<<<<< HEAD
 products: state.products.products.data,
 reviews: state.reviews.reviews
+=======
+    products: state.products.products,
+>>>>>>> 3f8bdce74559c1c017ec7572d7d548fd877b6e46
 })
 
 class ProductsContainer extends React.Component {

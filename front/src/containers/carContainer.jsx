@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux"
-import {fetchCarProducts,removeProductCar} from "../../redux/actionCreators/car"
+import {fetchCarProducts,removeProductCar,updateCarProducts} from "../../redux/actionCreators/car"
 import Cart from "../components/Cart"
 
 class CarContainer extends React.Component {
   constructor() {
     super();
       this.removeHandler=this.removeHandler.bind(this)
+      this.unitsHandler=this.unitsHandler.bind(this)
     } 
     
     componentDidMount(){
@@ -17,12 +18,17 @@ class CarContainer extends React.Component {
     this.props.removeProductCar(userId,pordID)
   }
 
+  unitsHandler(userId,pordID,data) {
+    this.props.updateCarProducts(userId,pordID,data)
+  }
+
   render() {
     return (
       <Cart
       user={this.props.user}
       products={this.props.products}
       removeHandler={this.removeHandler}
+      unitsHandler={this.unitsHandler}
       />
     );
   }
@@ -39,7 +45,8 @@ const mapStateToProps = function(state) {
 const mapDispatchToProps = function(dispatch){
   return {
     fetchCarProducts:(userid)=>dispatch(fetchCarProducts(userid)),
-    removeProductCar:(userId,prodId)=>dispatch(removeProductCar(userId,prodId))
+    removeProductCar:(userId,prodId)=>dispatch(removeProductCar(userId,prodId)),
+    updateCarProducts:(userId,prodId,data)=>dispatch(updateCarProducts(userId,prodId,data))
   }
 }
 

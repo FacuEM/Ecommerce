@@ -8,7 +8,9 @@ const fetchReviewsCreator = (data) => ({ type: FETCH_REVIEW, data });
 export const addReview = (id, data) => (dispatch) => {
   axios
     .post(`/api/review/addReview/${id}`, data)
-    .then((res) => dispatch(addReviewCreator(res.data)));
+    .then((res) => {
+      dispatch(addReviewCreator(res.data))
+    });
 };
 
 export const fetchReviews = (id) => (dispatch) => {

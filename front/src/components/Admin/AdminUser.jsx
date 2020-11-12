@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import {
   upgradeUser,
   downgradeUser,
-  fetchUsers,
 } from "../../../redux/actionCreators/adminCreator";
 
 class AdminUser extends Component {
@@ -14,7 +13,6 @@ class AdminUser extends Component {
   }
 
   render() {
-    console.log("PROPS", this.props.users);
     return (
       <div>
         {this.props.users &&
@@ -42,14 +40,13 @@ class AdminUser extends Component {
   }
 }
 
-const maptStateToProps = (state, ownProps) => {
+const maptStateToProps = (state) => {
   return {
     users: state.admin.users,
   };
 };
 
 export default connect(maptStateToProps, {
-  fetchUsers,
   upgradeUser,
   downgradeUser,
 })(AdminUser);

@@ -23,3 +23,6 @@ export const FETCH_REVIEW = "FETCH_REVIEW";
 // Users
 
 export const FETCH_USERS = "FETCH_USERS";
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+// Products

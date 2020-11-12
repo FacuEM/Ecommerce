@@ -57,7 +57,6 @@ reviews={this.props.reviews}
 }}
 
 const mapStateToProps = function(state, ownProps) {
-  console.log("STATEEEE",state.reviews.reviews)
   return {
     user: state.isLogged.logged.name,
     history: ownProps.history,

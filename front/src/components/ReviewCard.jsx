@@ -2,7 +2,7 @@ import React from "react"
 import {Form,Card}from"react-bootstrap"
 import {FaStar} from "react-icons/fa"
 
-const ReviewCard = ({review,date}) => {
+const ReviewCard = ({review}) => {
 
 
 return (

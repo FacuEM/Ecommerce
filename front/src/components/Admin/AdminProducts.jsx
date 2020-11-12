@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {fetchAdminProducts, addProduct} from "../../../redux/actionCreators/adminCreator";
+import { addProduct, deleteProduct ,fetchAdminProducts} from "../../../redux/actionCreators/adminCreator";
+
 import {Link} from 'react-router-dom'
 
 class AdminProducts extends Component {
@@ -16,11 +17,16 @@ class AdminProducts extends Component {
     };
     this.cambiarANum = this.cambiarANum.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
 
   cambiarANum(state){
     return {...state, price: Number(state.price), stock: Number(state.stock), categoryId: Number(state.categoryId)}
+  }
+
+  componentDidMount(){
+    this.props.fetchAdminProducts()
   }
 
   handleSubmit(e){ 
@@ -38,6 +44,9 @@ class AdminProducts extends Component {
   handleChange(e){
 
     this.setState({[e.target.name] : e.target.value})
+  }
+  handleDelete(id){
+    this.props.deleteProduct(id)
   }
 
   render() {
@@ -61,7 +70,7 @@ class AdminProducts extends Component {
                 <p>product name :{product.name}</p>
                 <p>product descript: {product.descripcion}</p>
                 <Link to={`/admin/products/update/${product.id}`}>Update</Link>
-                <button>Delete</button>
+                <button onClick={() => this.handleDelete(product.id)}>Delete</button>
               </div>
             );
           })}
@@ -72,8 +81,8 @@ class AdminProducts extends Component {
 
 const maptStateToProps = (state) => {
   return {
-    products: state.admin.products
+    products: state.products.products
   };  
 };
 
-export default connect(maptStateToProps, {fetchAdminProducts, addProduct})(AdminProducts);
+export default connect(maptStateToProps, {fetchAdminProducts, addProduct, deleteProduct})(AdminProducts);

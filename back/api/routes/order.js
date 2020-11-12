@@ -23,7 +23,7 @@ router.put("/:userId",(req,res,next)=>{
 
 
 router.get("/completes/:userId",(req,res,next)=>{
-    Orders.findAll({where:{userId:req.params.userId,pending:false},include:{model:CarProducts}})
+    Orders.findAll({where:{userId:req.params.userId,pending:false},order:[['createdAt', 'DESC']],include:{model:CarProducts}})
      .then(orders=>res.send(orders))
      .catch((err) => console.log(err));
 })

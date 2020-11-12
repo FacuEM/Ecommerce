@@ -14,9 +14,10 @@ import SingleProductContainer from './SingleProductContainer'
 import {fetchUser} from "../../redux/actionCreators/userValidation"
 import {fetchOrder} from '../../redux/actionCreators/car'
 
-import {fetchCarProducts} from '../../redux/actionCreators/car'
+import {fetchCarProducts,fetchOrders} from '../../redux/actionCreators/car'
 import Home from '../components/home'
 import CheckoutContainer from '../containers/CheckoutContainer'
+import OrdersContainer from '../containers/OrdersContainer'
 
 //Admin
 import AdminContainer from '../containers/AdminContainer'
@@ -38,7 +39,10 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser().then(() => {
-      if(this.props.user.id) this.props.fetchCarProducts(this.props.user.id)
+      if(this.props.user.id){
+        this.props.fetchCarProducts(this.props.user.id)
+        this.props.fetchOrders(this.props.user.id)
+      } 
     })
   }
 
@@ -56,8 +60,7 @@ class Main extends React.Component {
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/car/checkout" component={CheckoutContainer}/>
             <Route path="/car" component={CarContainer}/>
-
-            <Route path="/register" component={RegisterContainer}/>
+            <Route path="/orders" component={OrdersContainer}/>
             <Route path="/login" component={LoginContainer}/>
 
             <Route exact path="/products" component={ProductsContainer}/>
@@ -99,7 +102,9 @@ const mapDispatchToProps = (dispatch,ownProps) => {
     fetchUser: (user) => dispatch(fetchUser(user)),
     fetchOrder:(userid)=>dispatch(fetchOrder(userid)),
     fetchUsers: ()=>dispatch(fetchUsers()),
-    fetchCarProducts:(userid)=>dispatch(fetchCarProducts(userid))
+    fetchAdminProducts: ()=>dispatch(fetchAdminProducts()),
+    fetchCarProducts:(userid)=>dispatch(fetchCarProducts(userid)),
+    fetchOrders:(userid)=>dispatch(fetchOrders(userid))
  } 
 }
 

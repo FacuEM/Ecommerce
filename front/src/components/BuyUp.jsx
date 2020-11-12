@@ -1,9 +1,13 @@
 import React from "react"
-import {Form,Button,Col,Jumbotron} from 'react-bootstrap'
+import {Form,Button,Col,Jumbotron, OverlayTrigger,Tooltip} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 export default ({complete,products,handleSubmit,handleChange,direccion,metodo,city,zip,state,total})=>{
-  
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          sure you want to complete the purchase?
+        </Tooltip>
+      );
     return(<>
         {complete ? 
         ( <Jumbotron>
@@ -58,10 +62,15 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
             <Form.Group id="formGridCheckbox">
                 <Form.Check type="checkbox" label="seguro que quieres gastar tanta guita?" />
             </Form.Group>
-
-            <Button variant="outline-success" type="submit" disabled={products[0] ? false : true}>
-                BUY <i class="far fa-credit-card"></i>
-            </Button>
+            <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+            >
+                <Button variant="outline-success" type="submit" disabled={products[0] ? false : true}>
+                    BUY <i class="far fa-credit-card"></i>
+                </Button>
+            </OverlayTrigger>
         </Form>)}
        
         

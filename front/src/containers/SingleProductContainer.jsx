@@ -29,7 +29,13 @@ class Product extends Component {
     this.ratingAvg()
   }
   addProdudHandler(prodId){
-    this.props.AddProductCar(this.props.userId,prodId)
+    if(this.props.userId){
+      this.props.AddProductCar(this.props.userId,prodId)
+    }else{
+      const prueba=JSON.stringify(this.props.product)
+      localStorage.setItem(`${this.props.product.name}`, prueba)
+    }
+    
     this.setState({addToCart : true})
   }
 

@@ -22,18 +22,16 @@ export default ({hidden, hanledValue, inputHandler, value, user, clickLogout }) 
         onChange={e=>hanledValue(e.target.value)}/>
       <Button disabled={!value} variant="outline-info" className="mr-2" type='submit' >Search</Button>
     </Form>
-    
+    <Link to="/car"><Button variant="outline-light" className="mr-2"><CartDash/></Button></Link>
     {user.id ? 
     (<>
-    <Link to="/car"><Button variant="outline-light" className="mr-2"><CartDash/></Button></Link>
-    <Dropdown>
-      <Dropdown.Toggle variant="light" id="dropdown-basic">
+    <Dropdown >
+      <Dropdown.Toggle variant="outline-info" id="dropdown-basic">
         ¡Bienvenido, {user.name}!
       </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Perfil</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Mis Compras</Dropdown.Item>
+      <Dropdown.Menu >
+        <Link to='/orders'><Dropdown.Item href="#/action-2">Mis Compras</Dropdown.Item></Link>
         <Link to="/"><Dropdown.Item variant="outline-danger" onClick={clickLogout}>Logout</Dropdown.Item></Link>
        </Dropdown.Menu>
      </Dropdown>

@@ -18,16 +18,30 @@ const fetchCarProductsCreator = (products) => ({
   products,
 });
 
-export const fetchOrder = (userId) => (dispatch) => {
-  axios
-    .get(`/api/order/${userId}`)
+const fetchOrdersCreator = orders => ({
+    type:FETCH_ORDERS,
+    orders
+})
+
+
+
+
+
+export const fetchOrder = userId => dispatch =>{
+    axios.get(`/api/order/${userId}`)
     .then((res) => res.data)
     .then((order) => dispatch(fetchOrderCreator(order)));
 };
 
-export const fetchCarProducts = (userId) => (dispatch) => {
-  axios
-    .get(`/api/car/${userId}`)
+
+export const fetchOrders = userId => dispatch =>{
+    axios.get(`/api/order/completes/${userId}`)
+    .then((res) => res.data)
+    .then((order) => dispatch(fetchOrdersCreator(order)))
+}
+
+export const fetchCarProducts = userId => dispatch =>{
+    axios.get(`/api/car/${userId}`)
     .then((res) => res.data)
     .then((products) => dispatch(fetchCarProductsCreator(products)));
 };

@@ -3,6 +3,9 @@
   padding: 3px;
 }
 
+.jumbotron {
+  margin-top: 100px;
+}
 .car-img {
   height: 16rem;
   width: 16rem;
@@ -29,10 +32,6 @@
   height: 26rem;
   margin-top: 20px;
   width: 20rem;
-}
-
-.boton {
-  margin-left: 5px;
 }
 
 .categories {

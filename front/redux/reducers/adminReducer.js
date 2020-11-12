@@ -7,6 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USERS:
+      console.log("reducer");
       return { ...state, users: action.data };
     default:
       return state;

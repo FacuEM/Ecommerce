@@ -1,4 +1,4 @@
-import {FETCH_ORDER,FETCH_CAR_PRODUCTS} from "../constants"
+import {FETCH_ORDERS,FETCH_ORDER,FETCH_CAR_PRODUCTS} from "../constants"
 
 const initialState = { 
     orders : [],
@@ -8,8 +8,10 @@ const initialState = {
 
 export default  (state = initialState, action)=> {
 switch (action.type) {
+  case FETCH_ORDERS: 
+    return {...state, orders : action.orders} 
   case FETCH_ORDER: 
-    return {...state, order : action.order}  
+    return {...state, selectOrder : action.orders}    
   case FETCH_CAR_PRODUCTS: 
     return {...state, carProducts : action.products}  
   default: 

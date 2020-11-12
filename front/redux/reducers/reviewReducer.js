@@ -7,7 +7,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_REVIEW:
-      return { ...state, reviews: [...state.reviews, action.data] };
+      return { ...state, reviews: action.data };
     case FETCH_REVIEW:
       return { ...state, reviews: action.data };
     default:

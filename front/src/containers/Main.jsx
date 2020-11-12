@@ -16,6 +16,7 @@ import {fetchOrder} from '../../redux/actionCreators/car'
 
 import {fetchCarProducts} from '../../redux/actionCreators/car'
 import Home from '../components/home'
+import CheckoutContainer from '../containers/CheckoutContainer'
 
 //Admin
 import AdminContainer from '../containers/AdminContainer'
@@ -38,8 +39,6 @@ class Main extends React.Component {
     this.props.fetchUser().then(() => {
       if(this.props.user.id) this.props.fetchCarProducts(this.props.user.id)
     })
-    this.props.fetchUsers()
-
   }
 
   render(){
@@ -61,6 +60,8 @@ class Main extends React.Component {
             <Route exact path='/admin/orders' component={AdminOrders} />
 
             <Route path="/register" component={RegisterContainer}/>
+            <Route path="/car/checkout" component={CheckoutContainer}/>
+            <Route path="/car" component={CarContainer}/>
             <Route path="/login" component={LoginContainer}/>
 
             <Route path="/car" component={CarContainer}/>

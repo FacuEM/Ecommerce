@@ -2,9 +2,10 @@ import React from "react"
 import { Link } from 'react-router-dom';
 import {Navbar,Nav,Form,Button,FormControl, Dropdown} from 'react-bootstrap'
 import {CartDash} from "react-bootstrap-icons"
+import ParticleEffectButton from 'react-particle-effect-button'
 
 
-export default ({hanledValue, inputHandler, value, user, clickLogout }) => {
+export default ({hidden, hanledValue, inputHandler, value, user, clickLogout }) => {
   return (
     <Navbar bg="dark" variant="dark">
       <Link to="/">

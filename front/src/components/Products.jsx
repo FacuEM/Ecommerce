@@ -9,7 +9,8 @@ export default function Products({products}) {
     <CardDeck>
        {products && products.length == 0 ? <Alert variant={'info'}>No hay resultados</Alert> : null}
        {products && products.map(product => (   
-         <Link to={`/products/${product.id}`} key={product.id}><Card className='cardw' key={product.id}>
+         <Link to={`/products/${product.id}`} key={product.id}>
+           <Card className='cardw' key={product.id}>
            <Card.Img className='card-img' variant="top" src={product.image} />
            <Card.Body>
             <Card.Title>{product.name}</Card.Title>

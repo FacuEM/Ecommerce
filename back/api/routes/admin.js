@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 const { User, Product, Category, Orders } = require("../../models");
 
+
+
 router.get("/users", (req, res) => {
   User.findAll({}, { order: [["createdAt", "ASC"]] })
     .then((users) => {

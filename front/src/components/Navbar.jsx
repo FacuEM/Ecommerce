@@ -2,9 +2,10 @@ import React from "react"
 import { Link } from 'react-router-dom';
 import {Navbar,Nav,Form,Button,FormControl, Dropdown} from 'react-bootstrap'
 import {CartDash} from "react-bootstrap-icons"
+import ParticleEffectButton from 'react-particle-effect-button'
 
 
-export default ({hanledValue, inputHandler, value, user, clickLogout }) => {
+export default ({hidden, hanledValue, inputHandler, value, user, clickLogout }) => {
   return (
     <Navbar bg="dark" variant="dark">
       <Link to="/">
@@ -12,7 +13,8 @@ export default ({hanledValue, inputHandler, value, user, clickLogout }) => {
       </Link>
       <Nav className="mr-auto">
         <Link to="/"><Nav.Link href="/">Home</Nav.Link></Link>
-        <Link to="/admin"><Nav.Link href="/">ADMIN</Nav.Link></Link>
+        {user.type ? <Link to="/admin"><Nav.Link href="/">Panel Admin</Nav.Link></Link>
+         : null}
         <Link to="/categories"><Nav.Link href="/categories">Categories</Nav.Link></Link>
     </Nav>
     <Form inline onSubmit={e=> inputHandler(e)}>

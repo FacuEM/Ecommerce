@@ -1,9 +1,17 @@
 const router = require("express").Router();
 
-const { User, Product, Category, Orders } = require("../../models");
+const {
+  User,
+  Product,
+  Category,
+  Orders,
+  CarProducts,
+} = require("../../models");
+
+
 
 router.get("/users", (req, res) => {
-  User.findAll({},{order:[['createdAt', 'ASC']]})
+  User.findAll({}, { order: [["createdAt", "ASC"]] })
     .then((users) => {
       res.send(users);
     })
@@ -50,10 +58,10 @@ router.put("/users/downgrade/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// mostrat los products
+// mostrar los products
 
 router.get("/products", (req, res) => {
-  Product.findAll({},{order:[['updatedAt', 'ASC']]})
+  Product.findAll({}, { order: [["updatedAt", "ASC"]] })
     .then((products) => res.send(products))
     .catch((err) => console.log(err));
 });
@@ -67,15 +75,11 @@ router.post("/products/newProduct", (req, res) => {
 });
 
 router.put("/products/:id/editProduct", (req, res) => {
-  console.log(req.body)
   Product.update(req.body, {
     where: { id: req.params.id },
     returning: true,
     plain: true,
   })
-    .then(() => {
-      return Product.findByPk(req.param.id)
-    })
     .then((producto) => res.send(producto))
     .catch((err) => console.log(err));
 });
@@ -104,8 +108,8 @@ router.post("/categories/newCategory", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.put("/categories/:id/editCategorie", (req, res) => {
-  Categorie.update(req.body, {
+router.put("/categories/:id/editCategory", (req, res) => {
+  Category.update(req.body, {
     where: { id: req.params.id },
     returning: true,
     plain: true,
@@ -125,7 +129,12 @@ router.delete("/categories/:id/deleteCategory", (req, res) => {
 // orders
 
 router.get("/orders", (req, res) => {
-  Orders.findAll()
+  Orders.findAll({
+    where: {
+      pending: false,
+    },
+    include: { model: CarProducts },
+  })
     .then((order) => res.send(order))
     .catch((err) => console.log(err));
 });

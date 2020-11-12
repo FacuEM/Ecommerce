@@ -71,9 +71,13 @@ export default ({user,products,removeHandler,unitsHandler,productLocalStore,even
             style={{ width: '18rem' }}
             className="mb-2 cardCar"
         >
-            <Card.Header >{user.name} Cart</Card.Header>
-            <Card.Body>
-            <Card.Img variant="top"className="car-img" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" />
+          <Card.Header>{user.name} Cart</Card.Header>
+          <Card.Body>
+            <Card.Img
+              variant="top"
+              className="car-img"
+              src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png"
+            />
 
             <Card.Title>Total de compra : {totalCompra ? totalCompra : 0}$</Card.Title>
 

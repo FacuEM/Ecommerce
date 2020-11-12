@@ -18,16 +18,8 @@ export default function Products({products,ratingAvg}) {
              </Card.Text>
            </Card.Body>
            <Card.Footer>
-            <small className="text-muted">Stock: {product.stock}</small>{" - "}
-            <small className="text-muted">Rating: {[...Array(ratingAvg())].map((star) =>{
-                    return( 
-                      <label>
-                        <FaStar 
-                          size={15} 
-                          color={"#ffc107"}/>
-                      </label>
-                                )
-                                })}</small>
+            <small className="text-muted">Stock: {product.stock}</small>
+        
            </Card.Footer>
          </Card></Link>
        )) }

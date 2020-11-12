@@ -9,6 +9,12 @@ const fetchOrderCreator = order => ({
 })
 
 
+const fetchOrdersCreator = orders => ({
+    type:FETCH_ORDERS,
+    orders
+})
+
+
 const fetchCarProductsCreator = products => ({
     type:FETCH_CAR_PRODUCTS,
     products
@@ -20,6 +26,13 @@ export const fetchOrder = userId => dispatch =>{
     axios.get(`/api/order/${userId}`)
     .then((res) => res.data)
     .then((order) => dispatch(fetchOrderCreator(order)))
+}
+
+
+export const fetchOrders = userId => dispatch =>{
+    axios.get(`/api/order/completes/${userId}`)
+    .then((res) => res.data)
+    .then((order) => dispatch(fetchOrdersCreator(order)))
 }
 
 export const fetchCarProducts = userId => dispatch =>{

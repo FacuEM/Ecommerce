@@ -5,9 +5,12 @@ export const FETCH_PRODUCT = "FETCH_PRODUCT";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const FETCH_CATEGORY = "FETCH_CATEGORY";
 // Order
+export const FETCH_ORDERS = "FETCH_ORDERS";
+export const FETCH_SELECT_ORDERS = "FETCH_SELECT_ORDERS";
 export const FETCH_ORDER = "FETCH_ORDER";
-export const FETCH_CAR_PRODUCTS="FETCH_CAR_PRODUCTS"
-//facu
+export const FETCH_CAR_PRODUCTS = "FETCH_CAR_PRODUCTS";
+export const CHECKOUT_ORDER = "CHECKOUT_ORDER";
+
 // User
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
@@ -21,8 +24,13 @@ export const FETCH_REVIEW = "FETCH_REVIEW";
 
 // Super Admin
 // Users
-
 export const FETCH_USERS = "FETCH_USERS";
-export const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
-export const ADD_PRODUCT = 'ADD_PRODUCT'
+
 // Products
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const FETCH_ADMIN_PRODUCTS = "FETCH_ADMIN_PRODUCTS";
+
+// Category
+export const ADD_CATEGORY = "ADD_CATEGORY";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";

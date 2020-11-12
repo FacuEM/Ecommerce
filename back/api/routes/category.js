@@ -8,19 +8,18 @@ router.post("/newCategory", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/categories", (req, res) => {
+router.get("/", (req, res) => {
   Category.findAll()
     .then((cat) => res.send(cat))
     .catch((err) => console.log(err));
 });
 
-router.get("/:name", (req, res) => {
-  Category.findOne({
-    where: {
-      name: req.params.name,
-    },
-  })
-    .then((cat) => res.send(cat))
+router.get("/:id", (req, res) => {
+  Category.findByPk(req.params.id)
+    .then((cat) => {
+      console.log(cat);
+      return res.send(cat);
+    })
     .catch((err) => console.log(err));
 });
 

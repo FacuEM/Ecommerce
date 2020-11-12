@@ -36,6 +36,7 @@ render() {
     return ( 
       <div>
         <Navbar
+        hidden={false}
         hanledValue={this.hanledValue}
         inputHandler={this.inputHandler}
         value={this.state.value}

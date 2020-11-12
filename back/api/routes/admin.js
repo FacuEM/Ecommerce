@@ -8,6 +8,8 @@ const {
   CarProducts,
 } = require("../../models");
 
+
+
 router.get("/users", (req, res) => {
   User.findAll({}, { order: [["createdAt", "ASC"]] })
     .then((users) => {

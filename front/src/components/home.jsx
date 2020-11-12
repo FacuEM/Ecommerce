@@ -1,9 +1,25 @@
-import React from 'react'
-import {Carousel} from 'react-bootstrap'
+import React, {Fragment} from 'react'
+import {Carousel, Row, Container, Card} from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { fetchAdminProducts } from '../../redux/actionCreators/adminCreator'
+import {Link} from 'react-router-dom'
 
-export default ()=> {
-    return (
-        <>
+class Home extends React.Component{
+   
+  constructor(props){
+    super(props)
+    this.state={
+    }
+  }
+  
+
+  componentDidMount(){
+    this.props.fetchAdminProducts()
+  }
+  
+  render(){
+  return (
+       <Fragment>
         <Carousel>
           <Carousel.Item>
             <img
@@ -43,8 +59,37 @@ export default ()=> {
               <p>Consigue todo lo que necesitas para tu hogar en un solo lugar</p>
             </Carousel.Caption>
           </Carousel.Item>
-          
         </Carousel>
-        </>
+        <br/>
+        <h1 style={{marginTop : "4rem"}}>PRODUCTOS DESTACADOS DEL MES <i class="fas fa-percentage"></i></h1>
+        <Container>
+         <Row>
+          {this.props.products && this.props.products.map((prod) => {
+              if(prod.id%3==0){
+              return(<Link to={`/products/${prod.id}`} key={prod.id}>
+              <Card className='cardw' key={prod.id}>
+              <Card.Img className='card-img' variant="top" src={prod.image} />
+              <Card.Body>
+               <Card.Title>{prod.name}</Card.Title>
+                <Card.Text>
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+               <small className="text-muted">Stock: {prod.stock}</small>
+              </Card.Footer>
+             </Card>
+            </Link>)}})}
+        </Row>
+        </Container>
+      </Fragment>
     )
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    products : state.products.products
+  }
+}
+
+export default connect(mapStateToProps, {fetchAdminProducts})(Home)

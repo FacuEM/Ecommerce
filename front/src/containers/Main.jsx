@@ -27,6 +27,7 @@ import AdminProductsUpdate from '../components/Admin/AdminProductsUpdate';
 import AdminCategories from '../components/Admin/AdminCategories';
 import AdminCategoryUpdate from '../components/Admin/AdminCategoryUpdate'
 import AdminOrders from '../components/Admin/AdminOrders'
+import { Fragment } from 'react';
 
 
 class Main extends React.Component {
@@ -49,16 +50,10 @@ class Main extends React.Component {
       <Container>
         <Row className="justify-content-md-center">
           <Switch>
+
             <Route exact path="/" component={Home}/>
-          
-            <Route exact path="/admin" component={AdminContainer}/>
-            <Route exact path="/admin/users" component={AdminUser}/>
-            <Route exact path="/admin/products" component={AdminProducts}/>
-            <Route exact path="/admin/products/update/:id" component={AdminProductsUpdate}/>
-            <Route exact path='/admin/categories' component={AdminCategories} />
-            <Route exact path='/admin/categories/update/:id' component={AdminCategoryUpdate} />
-            <Route exact path='/admin/orders' component={AdminOrders} />
-            
+                     
+            <Route path="/register" component={RegisterContainer}/>
             <Route path="/car/checkout" component={CheckoutContainer}/>
             <Route path="/car" component={CarContainer}/>
 
@@ -70,6 +65,17 @@ class Main extends React.Component {
 
             <Route exact path="/categories" component={CategoriesContainer}/>
             <Route path='/categories/:id' component={ProductCategory} />
+            {this.props.user.type ?
+            <div>
+            <Route exact path="/admin" component={AdminContainer}/>
+            <Route exact path="/admin/users" component={AdminUser}/>
+            <Route exact path="/admin/products" component={AdminProducts}/>
+            <Route exact path="/admin/products/update/:id" component={AdminProductsUpdate}/>
+            <Route exact path='/admin/categories' component={AdminCategories} />
+            <Route exact path='/admin/categories/update/:id' component={AdminCategoryUpdate} />
+            <Route exact path='/admin/orders' component={AdminOrders}/>
+            </div>
+            : null}
 
             <Redirect from="/" to="/" />
           </Switch>

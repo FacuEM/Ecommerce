@@ -1,10 +1,9 @@
 import React from 'react'
 import { Basket } from 'react-bootstrap-icons';
 import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap'
+import {FaStar} from "react-icons/fa"
 
-
-export default ({ pText, productSelected, addProdudHandler }) => {
-
+export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
   return (
     <div>
       {productSelected.id &&
@@ -28,6 +27,17 @@ export default ({ pText, productSelected, addProdudHandler }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <strong>Precio:</strong> {`$${productSelected.price},00`}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <strong>Rating:</strong> {[...Array(ratingAvg())].map((star) =>{
+                    return( 
+                      <label>
+                        <FaStar 
+                          size={22} 
+                          color={"#ffc107"}/>
+                      </label>
+                                )
+                                })}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button variant="dark" onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>

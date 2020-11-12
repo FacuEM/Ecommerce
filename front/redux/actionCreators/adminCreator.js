@@ -5,16 +5,12 @@ import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   FETCH_ADMIN_PRODUCTS,
+  FETCH_ADMIN_ORDERS,
 } from "../constants";
 import axios from "axios";
 import { fetchCategories } from "../actionCreators/searchCreator";
 
-export const fetchUsersCreator = (data) => {
-  return {
-    type: FETCH_USERS,
-    data,
-  };
-};
+const fetchUsersCreator = (data) => ({ type: FETCH_USERS, data });
 
 const fetchAdminProductsCreator = (data) => ({
   type: FETCH_ADMIN_PRODUCTS,
@@ -26,6 +22,8 @@ const deleteAdminProduct = (data) => ({ type: DELETE_PRODUCT, data });
 
 const addAdminCategory = (data) => ({ type: ADD_CATEGORY, data });
 const deleteAdminCategory = (data) => ({ type: DELETE_CATEGORY, data });
+
+const fetchAdminOdersCreator = (data) => ({ type: FETCH_ADMIN_ORDERS, data });
 
 //////////USERS ADMIN
 
@@ -105,4 +103,17 @@ export const deleteCategory = (id) => (dispatch) => {
   axios
     .delete(`/api/admin/categories/${id}/deleteCategory`)
     .then(() => dispatch(deleteAdminCategory(id)));
+};
+
+//////////ORDERS
+
+export const fetchAdminOrders = () => (dispatch) => {
+  console.log("action fetchAdminOrders");
+  axios
+    .get("/api/admin/orders")
+    .then((res) => res.data)
+    .then((orders) => {
+      dispatch(fetchAdminOdersCreator(orders));
+    })
+    .catch((e) => console.log("ERRORRRR", e));
 };

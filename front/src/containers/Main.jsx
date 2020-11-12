@@ -56,9 +56,10 @@ class Main extends React.Component {
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/car/checkout" component={CheckoutContainer}/>
             <Route path="/car" component={CarContainer}/>
+
+            <Route path="/register" component={RegisterContainer}/>
             <Route path="/login" component={LoginContainer}/>
 
-            <Route path="/car" component={CarContainer}/>
             <Route exact path="/products" component={ProductsContainer}/>
             <Route path="/products/:id" component={SingleProductContainer} />
 

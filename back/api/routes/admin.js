@@ -52,7 +52,7 @@ router.put("/users/downgrade/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// mostrat los products
+// mostrar los products
 
 router.get("/products", (req, res) => {
   Product.findAll({}, { order: [["updatedAt", "ASC"]] })

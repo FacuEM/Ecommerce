@@ -15,8 +15,16 @@ export default ({errorState , error, isLoading, handleSubmit, handleChange, emai
         <Form.Label>Password</Form.Label>
         <Form.Control id="password" value={password} onChange={handleChange}type="password" placeholder="Password" />
     </Form.Group>
-    {errorState && (!error ? isLoading ? 
     <Alert variant='info'>
+    <Link to='/register'>Crear nueva cuenta.</Link>
+    </Alert>
+    <Button variant="dark" type="submit">
+        Submit
+    </Button>
+    <br/>
+    <br/>
+    {errorState && (!error ? isLoading ? 
+    <Alert variant='success'>
     Cargando... 
     <Spinner animation="border" variant="info" className={'spiner'}/>
     <br/>
@@ -26,13 +34,6 @@ export default ({errorState , error, isLoading, handleSubmit, handleChange, emai
     Usuario o password incorrectos.
     <br/>
     </Alert> )}
-    <Alert variant='info'>
-    <Link to='/register'>Crear nueva cuenta.</Link>
-    </Alert>
-    
-    <Button variant="dark" type="submit">
-        Submit
-    </Button>
     </Form>
 </div>
 )

@@ -1,6 +1,12 @@
 const router = require("express").Router();
 
-const { User, Product, Category, Orders } = require("../../models");
+const {
+  User,
+  Product,
+  Category,
+  Orders,
+  CarProducts,
+} = require("../../models");
 
 
 
@@ -127,6 +133,7 @@ router.get("/orders", (req, res) => {
     where: {
       pending: false,
     },
+    include: { model: CarProducts },
   })
     .then((order) => res.send(order))
     .catch((err) => console.log(err));

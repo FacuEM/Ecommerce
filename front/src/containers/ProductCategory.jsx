@@ -9,7 +9,6 @@ class ProductCategory extends Component {
   }
 
   componentDidMount(){
-    console.log('llega a cDM')
     this.props.fetchCategory(this.props.id)
   }
   render() {

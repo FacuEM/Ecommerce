@@ -22,6 +22,9 @@ class AdminOrders extends Component {
                 <p>User Id:{order.userId}</p>
                 <p>Direccion: {order.direccion}</p>
                 <p>Total: {order.total}</p>
+                <ul>
+            {order.carproducts.map((prod) => <li>{prod.name}</li>)}
+                </ul>
               </div>
             );
           })}

@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {CardDeck,Card, Alert} from 'react-bootstrap'
+import {FaStar} from "react-icons/fa"
 
-export default function Products({products}) {
+export default function Products({products,ratingAvg}) {
   
   
   return (
@@ -19,6 +20,7 @@ export default function Products({products}) {
            </Card.Body>
            <Card.Footer>
             <small className="text-muted">Stock: {product.stock}</small>
+        
            </Card.Footer>
          </Card></Link>
        )) }

@@ -1,5 +1,13 @@
-import { FETCH_USERS, FETCH_PRODUCTS, UPDATE_PRODUCT, ADD_PRODUCT } from "../constants";
+import {
+  FETCH_USERS,
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
+  ADD_CATEGORY,
+  DELETE_CATEGORY,
+  FETCH_ADMIN_PRODUCTS,
+} from "../constants";
 import axios from "axios";
+import { fetchCategories } from "../actionCreators/searchCreator";
 
 export const fetchUsersCreator = (data) => {
   return {
@@ -8,11 +16,16 @@ export const fetchUsersCreator = (data) => {
   };
 };
 
-const fetchAdminProductsCreator = (data) => ({ type: FETCH_PRODUCTS, data });
+const fetchAdminProductsCreator = (data) => ({
+  type: FETCH_ADMIN_PRODUCTS,
+  data,
+});
 
-const updateAdminProduct = (data) => ({type: UPDATE_PRODUCT, data})
+const addAdminProduct = (data) => ({ type: ADD_PRODUCT, data });
+const deleteAdminProduct = (data) => ({ type: DELETE_PRODUCT, data });
 
-const addAdminProduct = (data) => ({type: ADD_PRODUCT, data})
+const addAdminCategory = (data) => ({ type: ADD_CATEGORY, data });
+const deleteAdminCategory = (data) => ({ type: DELETE_CATEGORY, data });
 
 //////////USERS ADMIN
 
@@ -40,29 +53,56 @@ export const downgradeUser = (id) => (dispatch) => {
 
 //////////PRODUCTS
 
-
 export const fetchAdminProducts = () => (dispatch) => {
-  axios.get(`/api/admin/products`)
-  .then(res => res.data)
-  .then((prods) => {
-    dispatch(fetchAdminProductsCreator(prods));
-  })
+  axios
+    .get(`/api/admin/products`)
+    .then((res) => {
+      return res.data;
+    })
+    .then((prods) => {
+      dispatch(fetchAdminProductsCreator(prods));
+    });
 };
 
-export const updateProduct = (id,dato) => (dispatch) => {
+export const updateProduct = (id, data) => () => {
   return axios
-  .put(`/api/admin/products/${id}/editProduct`, dato)
-  .then(() => axios.get(`/api/admin/products`)
-  .then(res => res.data)
-  .then((prods) => {
-    dispatch(fetchAdminProductsCreator(prods));
-  }))
+    .put(`/api/admin/products/${id}/editProduct`, data)
+    .then(() => fetchAdminProducts());
 };
 
-export const addProduct = (dato) => (dispatch) => {
-  axios.post(`/api/admin/products/newProduct`, dato)
-  .then(res => res.data)
-  .then((prod) => {
-    dispatch(addAdminProduct(prod));
-  })
+export const addProduct = (data) => (dispatch) => {
+  axios
+    .post(`/api/admin/products/newProduct`, data)
+    .then((res) => res.data)
+    .then((prod) => {
+      dispatch(addAdminProduct(prod));
+    });
+};
+
+export const deleteProduct = (id) => (dispatch) => {
+  axios
+    .delete(`/api/admin/products/${id}/deleteProduct`)
+    .then(() => dispatch(deleteAdminProduct(id)));
+};
+
+//////////CATEGORY
+export const addCategory = (data) => (dispatch) => {
+  axios
+    .post("/api/admin/categories/newCategory", data)
+    .then((res) => res.data)
+    .then((cat) => {
+      dispatch(addAdminCategory(cat));
+    });
+};
+
+export const updateCategory = (id, data) => () => {
+  return axios
+    .put(`/api/admin/categories/${id}/editCategory`, data)
+    .then(() => fetchCategories());
+};
+
+export const deleteCategory = (id) => (dispatch) => {
+  axios
+    .delete(`/api/admin/categories/${id}/deleteCategory`)
+    .then(() => dispatch(deleteAdminCategory(id)));
 };

@@ -11,7 +11,7 @@ import {
   Alert,
   Form,
   Button,
-  ListGroup,
+  
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -145,7 +145,7 @@ class AdminProducts extends Component {
           ) : null}
           {this.props.products &&
             this.props.products.map((product) => (
-              <Link to={`/products/${product.id}`} key={product.id}>
+            
                 <Card style={{ width: "18rem" }} key={product.id}>
                   <Card.Img variant="top" src={product.image} />
                   <Card.Body>
@@ -165,10 +165,10 @@ class AdminProducts extends Component {
                     </Button>
                   </Card.Body>
                 </Card>
-              </Link>
+            
             ))}
         </CardDeck>
-        );
+      
       </div>
     );
   }

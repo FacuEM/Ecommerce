@@ -69,7 +69,11 @@ class Home extends React.Component {
               this.props.products.map((prod) => {
                 if (prod.id % 3 == 0) {
                   return (
-                    <Card className="cardw" key={prod.id}>
+                    <Card
+                      className="cardw"
+                      style={{ margin: "10px" }}
+                      key={prod.id}
+                    >
                       <Link to={`/products/${prod.id}`} key={prod.id}>
                         <Card.Img
                           className="card-img"

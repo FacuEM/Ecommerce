@@ -146,7 +146,7 @@ class AdminProducts extends Component {
           {this.props.products &&
             this.props.products.map((product) => (
             
-                <Card style={{ width: "18rem" }} key={product.id}>
+                <Card style={{ width: "18rem", color: "black" }} key={product.id}>
                   <Card.Img variant="top" src={product.image} />
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>

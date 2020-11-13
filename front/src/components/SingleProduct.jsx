@@ -29,7 +29,7 @@ export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
                   <strong>Precio:</strong> {`$${productSelected.price},00`}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <strong>Rating:</strong> {ratingAvg[0] && [...Array(ratingAvg())].map((star) =>{
+                  <strong>Rating:</strong> {[...Array(ratingAvg())].map((star) =>{
                     return( 
                       <label>
                         <FaStar 
@@ -40,9 +40,10 @@ export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
                                 })}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button variant="dark" onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>
+                  <Button variant="outline-info" disabled={productSelected.stock ? false : true}
+                  onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>
                   <br/>
-                   {pText ? <Button variant="success" disabled>
+                   {pText ? <Button variant="success" disabled className='addCar'>
                               {productSelected.name} agregado al carrito.
                             </Button> : null}
                 </ListGroup.Item>

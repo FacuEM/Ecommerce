@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {
   upgradeUser,
@@ -22,10 +22,14 @@ class AdminUser extends Component {
           this.props.users.map((user) => {
             return (
               <div key={user.id}>
-                <h2>User Id: {user.id}</h2>
+                <Link to={`/admin/orders/${user.id}`}>
+        
+                <h2>User Id: {user.id}</h2>  </Link>
                 <p>User name :{user.name}</p>
                 <p>User email :{user.email}</p>
                 <p>Admin: {user.type ? "admin" : "not admin"}</p>
+            
+              
                 {user.type ? (
                   <button onClick={() => this.props.downgradeUser(user.id)}>
                     Downgrade user

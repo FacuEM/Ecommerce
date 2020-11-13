@@ -8,8 +8,6 @@ const {
   CarProducts,
 } = require("../../models");
 
-
-
 router.get("/users", (req, res) => {
   User.findAll({}, { order: [["createdAt", "ASC"]] })
     .then((users) => {
@@ -136,6 +134,18 @@ router.get("/orders", (req, res) => {
     include: { model: CarProducts },
   })
     .then((order) => res.send(order))
+    .catch((err) => console.log(err));
+});
+
+router.get("/orders/:user", (req, res) => {
+  Orders.findAll({
+    where: {
+      userId: req.params.user,
+    },
+    order: [["createdAt", "ASC"]],
+    include: { model: CarProducts },
+  })
+    .then((orders) => res.send(orders))
     .catch((err) => console.log(err));
 });
 

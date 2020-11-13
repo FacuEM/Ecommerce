@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   upgradeUser,
   downgradeUser,
-  fetchUsers
+  fetchUsers,
 } from "../../../redux/actionCreators/adminCreator";
+
+import { Table, Button } from "react-bootstrap";
 
 class AdminUser extends Component {
   constructor(props) {
@@ -13,31 +15,57 @@ class AdminUser extends Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.fetchUsers()
+    this.props.fetchUsers();
   }
   render() {
     return (
       <div>
-        {this.props.users &&
-          this.props.users.map((user) => {
-            return (
-              <div key={user.id}>
-                <h2>User Id: {user.id}</h2>
-                <p>User name :{user.name}</p>
-                <p>User email :{user.email}</p>
-                <p>Admin: {user.type ? "admin" : "not admin"}</p>
-                {user.type ? (
-                  <button onClick={() => this.props.downgradeUser(user.id)}>
-                    Downgrade user
-                  </button>
-                ) : (
-                  <button onClick={() => this.props.upgradeUser(user.id)}>
-                    Upgrade user
-                  </button>
-                )}
-              </div>
-            );
-          })}
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Nombre</th>
+              <th>E-Mail</th>
+              <th>Admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.users &&
+              this.props.users.map((user) => {
+                return (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <Link to={`/admin/orders/${user.id}`}>
+                      <td>
+                        <Button variant="dark">Orders</Button>
+                      </td>
+                    </Link>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.type ? "admin" : "not admin"}</td>
+                    {user.type ? (
+                      <Button
+                        variant="dark"
+                        onClick={() => this.props.downgradeUser(user.id)}
+                      >
+                        Downgrade user
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="dark"
+                        onClick={() => this.props.upgradeUser(user.id)}
+                      >
+                        Upgrade user
+                      </Button>
+                    )}
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
+        <Link to="/admin">
+          <Button variant="secondary">ADMIN PANEL</Button>
+        </Link>
       </div>
     );
   }
@@ -52,5 +80,24 @@ const maptStateToProps = (state) => {
 export default connect(maptStateToProps, {
   upgradeUser,
   downgradeUser,
-  fetchUsers
+  fetchUsers,
 })(AdminUser);
+
+/*
+<div key={user.id}>
+                  <h2>User Id: {user.id}</h2>
+                  <p>User name :{user.name}</p>
+                  <p>User email :{user.email}</p>
+                  <p>Admin: {user.type ? "admin" : "not admin"}</p>
+                  {user.type ? (
+                    <button onClick={() => this.props.downgradeUser(user.id)}>
+                      Downgrade user
+                    </button>
+                  ) : (
+                    <button onClick={() => this.props.upgradeUser(user.id)}>
+                      Upgrade user
+                    </button>
+                  )}
+                </div>
+
+                */

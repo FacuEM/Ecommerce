@@ -7,11 +7,35 @@ class AdminOrders extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.productoDestacado = this.productoDestacado.bind(this)
+    this.prodFinal = this.prodFinal.bind(this)
   }
+
   componentDidMount() {
     this.props.fetchAdminOrders()
   }
+
+  productoDestacado(orders){
+    return orders.map((order) => {
+      return order.carproducts.map((prod)=>{
+         return prod.name
+      })
+    })
+  }
+
+  prodFinal(arr){
+      return arr.sort((a,b) =>
+            arr.filter(v => v===a).length
+          - arr.filter(v => v===b).length
+      ).pop();
+  }
+
   render() {
+    let prodDestacado
+    if(this.props.orders){
+      prodDestacado = this.prodFinal(this.productoDestacado(this.props.orders).flat())
+    }
+    console.log(prodDestacado)
     return (
       <div>
         {this.props.orders &&
@@ -23,11 +47,12 @@ class AdminOrders extends Component {
                 <p>Direccion: {order.direccion}</p>
                 <p>Total: {order.total}</p>
                 <ul>
-            {order.carproducts.map((prod) => <li>{prod.name}</li>)}
+              {order.carproducts.map((prod) => <li>{prod.name}</li>)}
                 </ul>
               </div>
             );
           })}
+          <h1>PRODUCTO DESTACADO: {prodDestacado}</h1>
       </div>
     );
   }

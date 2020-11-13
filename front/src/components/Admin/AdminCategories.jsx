@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {fetchCategories} from "../../../redux/actionCreators/searchCreator";
 import {addCategory, deleteCategory} from '../../../redux/actionCreators/adminCreator'
 import {Link} from 'react-router-dom'
+import { Form, Button, Card } from "react-bootstrap";
 
 class AdminCategories extends Component {
   constructor(props) {
@@ -38,21 +39,47 @@ class AdminCategories extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <input onChange={this.handleChange} type="text" name='name' value={this.state.name} placeholder='Category Name'/>
-          <input onChange={this.handleChange} type="text" name='image' value={this.state.image} placeholder='Category Url'/>
-          <button type='submit'>Add Product</button>
-        </form>
+       
+       <Form onSubmit={(e) => this.handleSubmit(e)}>
+        <Form.Group>
+            <Form.Label>Category Name</Form.Label>
+            <Form.Control onChange={this.handleChange} type="text" name='name' value={this.state.name} placeholder='Category Name'/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Category Url</Form.Label>
+            <Form.Control onChange={this.handleChange} type="text" name='image' value={this.state.image} placeholder='Category Url'/>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Agregar
+          </Button>
+          </Form>
+
         <br/>
         {this.props.categories &&
           this.props.categories.map((category) => {
             return (
-              <div key={category.id}>
-                <h3>Category Id: {category.id}</h3>
-                <p>Category name :{category.name}</p>
-                <Link to={`/admin/categories/update/${category.id}`}>Update</Link>
-                <button onClick={() => this.handleDelete(category.id)}>Delete</button>
-              </div>
+
+              <Card style={{ width: "18rem" }} key={category.id}>
+              <Card.Img variant="top" src={category.image} />
+              <Card.Body>
+                <Card.Title>{category.name}</Card.Title>
+              </Card.Body>
+              <Card.Body>
+                <Button variant="info">
+                  <Link to={`/admin/categories/update/${category.id}`}>
+                    Update
+                  </Link>
+                </Button>
+                <Button
+                  variant="light"
+                  onClick={() => this.handleDelete(category.id)}
+                >
+                  Delete
+                </Button>
+              </Card.Body>
+            </Card>
+
+              
             );
           })}
       </div>
@@ -67,3 +94,4 @@ const maptStateToProps = (state) => {
 };
 
 export default connect(maptStateToProps, {fetchCategories, addCategory, deleteCategory})(AdminCategories);
+

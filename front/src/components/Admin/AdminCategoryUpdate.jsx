@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {fetchCategory} from '../../../redux/actionCreators/searchCreator'
 import { Link } from 'react-router-dom'
 import { updateCategory } from "../../../redux/actionCreators/adminCreator";
+import { Form, Button } from "react-bootstrap";
 
 class AdminProductsUpdate extends Component {
     constructor(props) {
@@ -45,12 +46,19 @@ class AdminProductsUpdate extends Component {
             <div>
                 <h1>Edit Category</h1>
                 {category ?
-                    <form onSubmit={(e) => this.handleSubmit(e)}>
-                        <h3>{category.name}</h3>
-                        <input onChange={this.handleChange} type="text" name='name' value={this.state.name} placeholder={category.name} />
-                        <input onChange={this.handleChange} type="text" name='image' value={this.state.image} placeholder={category.image} />
-                     <button type='submit'>Actualizar</button>
-                    </form> :
+                   <Form onSubmit={(e) => this.handleSubmit(e)}>
+                   <Form.Group>
+                       <Form.Label>Category Name</Form.Label>
+                       <Form.Control onChange={this.handleChange} type="text" name='name' value={this.state.name} placeholder={category.name}/>
+                     </Form.Group>
+                     <Form.Group>
+                       <Form.Label>Category Url</Form.Label>
+                       <Form.Control onChange={this.handleChange} type="text" name='image' value={this.state.image} placeholder={category.image}/>
+                     </Form.Group>
+                     <Button variant="primary" type="submit">
+            Actualizar
+          </Button>
+                    </Form> :
                     null}
                 {this.booleano ? <Link to='/admin/categories'>Categoria actualizado con exito..Go Back</Link> : null}    
             </div> 

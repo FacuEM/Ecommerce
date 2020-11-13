@@ -29,7 +29,7 @@ export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
                   <strong>Precio:</strong> {`$${productSelected.price},00`}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <strong>Rating:</strong> {ratingAvg[0]&&[...Array(ratingAvg())].map((star) =>{
+                  <strong>Rating:</strong> {ratingAvg[0] && [...Array(ratingAvg())].map((star) =>{
                     return( 
                       <label>
                         <FaStar 

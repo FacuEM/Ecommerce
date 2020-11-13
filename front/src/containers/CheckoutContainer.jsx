@@ -5,13 +5,6 @@ import BuyUp from "../components/BuyUp"
 import{ init,send } from 'emailjs-com';
 init("user_uNLSGcdttPeTRMBs14PGz")
 
-// API keys
-// User ID
-// user_uNLSGcdttPeTRMBs14PGz
-// Access Token
-// 7f3e73330d80db5498679df6a0c5f964
-
-// lucasnovaroh@gmail.com
 
 class CheckoutContainer extends React.Component {
   constructor() {

@@ -8,6 +8,7 @@ class AdminOrders extends Component {
     super(props);
     this.state = {};
     this.productoDestacado = this.productoDestacado.bind(this)
+    this.prodFinal = this.prodFinal.bind(this)
   }
 
   componentDidMount() {
@@ -22,10 +23,17 @@ class AdminOrders extends Component {
     })
   }
 
+  prodFinal(arr){
+      return arr.sort((a,b) =>
+            arr.filter(v => v===a).length
+          - arr.filter(v => v===b).length
+      ).pop();
+  }
+
   render() {
     let prodDestacado
     if(this.props.orders){
-      prodDestacado = this.productoDestacado(this.props.orders).flat()
+      prodDestacado = this.prodFinal(this.productoDestacado(this.props.orders).flat())
     }
     console.log(prodDestacado)
     return (
@@ -44,7 +52,7 @@ class AdminOrders extends Component {
               </div>
             );
           })}
-          <h1>PRODUCTO DESTACADO: {prodDestacado.length > 0 ? prodDestacado[0] : null}</h1>
+          <h1>PRODUCTO DESTACADO: {prodDestacado}</h1>
       </div>
     );
   }

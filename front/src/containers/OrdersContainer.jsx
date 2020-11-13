@@ -12,12 +12,7 @@ class OrdersContainer extends React.Component {
     componentDidMount(){
         this.props.fetchOrders(this.props.user.id)
     }
-    // componentDidUpdate(prevProps) {
-    //     // Uso tipico (no olvides de comparar las props):
-    //     if (this.props.user !== prevProps.user) {
-    //         this.props.fetchOrders(prevProps.user.id)
-    //     }
-    //   }
+  
 
   render() {
     return (

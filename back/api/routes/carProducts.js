@@ -18,7 +18,7 @@ router.get("/:userId",(req,res,next)=>{
 //agrega un producto al carrito de compras
 //devuelve un 200 ok
 
-router.put("/add/:userId/:prodId",(req,res,next)=>{
+router.post("/add/:userId/:prodId",(req,res,next)=>{
   Orders.findOne({where:{userId:req.params.userId,pending:true}})
   .then(orden=>{
     Product.findByPk(req.params.prodId)
@@ -28,18 +28,29 @@ router.put("/add/:userId/:prodId",(req,res,next)=>{
                     if(carp){
                         res.sendStatus(200)
                     }else{
-                        CarProducts.create({
+                      if(req.body.units){
+                       return CarProducts.create({
+                          name:prod.name,
+                          price:prod.price,
+                          productId:prod.id,
+                          orderId:orden.id,
+                          units:req.body.units
+                          })
+                      }else{
+                        return CarProducts.create({
                             name:prod.name,
                             price:prod.price,
                             productId:prod.id,
                             orderId:orden.id
                             })
-                            .then((prod)=>{
+                      }
+                        
+                            
+                    }
+                }).then((prod)=>{
                               orden.addCarproduct(prod)
                               .then(()=>res.sendStatus(201))
                             })
-                    }
-                })
         })   
     })
 

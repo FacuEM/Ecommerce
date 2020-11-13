@@ -16,7 +16,7 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
                 le estara llegando un correo con los datos de su compra!!
             </p>
             <p>
-                <Button variant="outline-info" className="mr-2">Mis Compras</Button> 
+                <Link to='/orders'><Button variant="outline-info" className="mr-2">Mis Compras</Button></Link>
                 <Link to='/'><Button variant="outline-info" className="mr-2">Home</Button></Link>
             </p>
         </Jumbotron>) 
@@ -64,7 +64,7 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
             </Form.Group>
             <OverlayTrigger
                 placement="bottom"
-                delay={{ show: 250, hide: 400 }}
+                delay={{ show: 100, hide: 400 }}
                 overlay={renderTooltip}
             >
                 <Button variant="outline-success" type="submit" disabled={products[0] ? false : true}>

@@ -8,7 +8,7 @@ const {Orders,Product,CarProducts} =require("../../models")
 router.get("/:userId",(req,res,next)=>{
    Orders.findOne({where:{userId:req.params.userId,pending:true}})
    .then(orden=>{
-      return CarProducts.findAll({where:{orderId:orden.id},include:{model:Product}})
+      return CarProducts.findAll({where:{orderId:orden.id},order:[['createdAt', 'DESC']],include:{model:Product}})
    })
     .then(products=>res.send(products))
     .catch((err) => console.log(err));
@@ -50,7 +50,7 @@ router.put("/add/:userId/:prodId",(req,res,next)=>{
 
 router.put("/:prodId",(req,res,next)=>{
   CarProducts.update(req.body,{where:{id:req.params.prodId}})
-  .then((pro)=>res.sendStatus(200))
+  .then((pro)=>res.send(pro))
   .catch((err) => console.log(err));
 })
 

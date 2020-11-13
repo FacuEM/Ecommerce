@@ -14,18 +14,21 @@ import SingleProductContainer from "./SingleProductContainer";
 import { fetchUser } from "../../redux/actionCreators/userValidation";
 import { fetchOrder } from "../../redux/actionCreators/car";
 
-import { fetchCarProducts } from "../../redux/actionCreators/car";
+import { fetchCarProducts, fetchOrders } from "../../redux/actionCreators/car";
 import Home from "../components/home";
+import CheckoutContainer from "../containers/CheckoutContainer";
+import OrdersContainer from "../containers/OrdersContainer";
 
 //Admin
 import AdminContainer from "../containers/AdminContainer";
 import AdminUser from "../components/Admin/AdminUser";
-import {
-  fetchUsers,
-  fetchAdminProducts,
-} from "../../redux/actionCreators/adminCreator";
+import { fetchUsers } from "../../redux/actionCreators/adminCreator";
 import AdminProducts from "../components/Admin/AdminProducts";
 import AdminProductsUpdate from "../components/Admin/AdminProductsUpdate";
+import AdminCategories from "../components/Admin/AdminCategories";
+import AdminCategoryUpdate from "../components/Admin/AdminCategoryUpdate";
+import AdminOrders from "../components/Admin/AdminOrders";
+import { Fragment } from "react";
 
 class Main extends React.Component {
   constructor(props) {
@@ -35,10 +38,11 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser().then(() => {
-      if (this.props.user.id) this.props.fetchCarProducts(this.props.user.id);
+      if (this.props.user.id) {
+        this.props.fetchCarProducts(this.props.user.id);
+        this.props.fetchOrders(this.props.user.id);
+      }
     });
-    this.props.fetchUsers();
-    this.props.fetchAdminProducts();
   }
 
   render() {
@@ -49,21 +53,46 @@ class Main extends React.Component {
           <Row className="justify-content-md-center">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/admin" component={AdminContainer} />
-              <Route exact path="/admin/users" component={AdminUser} />
-              <Route exact path="/admin/products" component={AdminProducts} />
-              <Route
-                exact
-                path="/admin/products/update/:id"
-                component={AdminProductsUpdate}
-              />
+
               <Route path="/register" component={RegisterContainer} />
+              <Route path="/car/checkout" component={CheckoutContainer} />
               <Route path="/car" component={CarContainer} />
+              <Route path="/orders" component={OrdersContainer} />
               <Route path="/login" component={LoginContainer} />
+
               <Route exact path="/products" component={ProductsContainer} />
               <Route path="/products/:id" component={SingleProductContainer} />
+
               <Route exact path="/categories" component={CategoriesContainer} />
               <Route path="/categories/:id" component={ProductCategory} />
+              {this.props.user.type ? (
+                <div>
+                  <Route exact path="/admin" component={AdminContainer} />
+                  <Route exact path="/admin/users" component={AdminUser} />
+                  <Route
+                    exact
+                    path="/admin/products"
+                    component={AdminProducts}
+                  />
+                  <Route
+                    exact
+                    path="/admin/products/update/:id"
+                    component={AdminProductsUpdate}
+                  />
+                  <Route
+                    exact
+                    path="/admin/categories"
+                    component={AdminCategories}
+                  />
+                  <Route
+                    exact
+                    path="/admin/categories/update/:id"
+                    component={AdminCategoryUpdate}
+                  />
+                  <Route exact path="/admin/orders" component={AdminOrders} />
+                </div>
+              ) : null}
+
               <Redirect from="/" to="/" />
             </Switch>
           </Row>
@@ -88,6 +117,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchAdminProducts: () => dispatch(fetchAdminProducts()),
     fetchCarProducts: (userid) => dispatch(fetchCarProducts(userid)),
+    fetchOrders: (userid) => dispatch(fetchOrders(userid)),
   };
 };
 

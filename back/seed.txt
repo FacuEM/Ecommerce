@@ -29,7 +29,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/2954-thickbox_default/brasero-de-mesa-art1800.jpg",
     "stock": 5,
     "price": 1200,
-    "categoryId": 5
+    "categoryId": 1
 },
 {
     "name": "espatula",
@@ -37,7 +37,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/7068-thickbox_default/la-cabrera-espatula-mango-madera-p-parrilla-art-66944.jpg",
     "stock": 8,
     "price": 300,
-    "categoryId": 5
+    "categoryId": 1
 },
 {
     "name": "tabla",
@@ -45,7 +45,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/7215-thickbox_default/tabla-madera-redonda-34cm-art-p1222571.jpg",
     "stock": 4,
     "price": 1000,
-    "categoryId": 5
+    "categoryId": 1
 },
 {
     "name": "cacerola",
@@ -53,7 +53,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/7772-thickbox_defaultarmonia-alegra-cacerola-24cm-57l-acero-inox-art-62654-248.jpg",
     "stock": 5,
     "price": 5000,
-    categoryId: 6
+    categoryId: 2
 },
 {
     "name": "jarro hervidor",
@@ -61,7 +61,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/2861-thickbox_default/paris-hervidor-leche-12cm-art-20540-612.jpg",
     "stock": 3,
     "price": 1200,
-    "categoryId": 6
+    "categoryId": 2
 },
 {
     "name": "sarten",
@@ -69,7 +69,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/7592-thickbox_default/loreto-sarten-teflon-24cm-art-20380-024.jpg",
     "stock": 5,
     "price": 1200,
-    "categoryId": 6
+    "categoryId": 2
 },
 {
     "name": "cuchara",
@@ -77,7 +77,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/5440-thickbox_default/cuchara-sopera-1-pieza-metalica-x6-en-bolsa-art-p1222719-cyber.jpg",
     "stock": 10,
     "price": 600,
-    "categoryId": 7
+    "categoryId": 3
 },
 {
     "name": "cuchillo",
@@ -85,7 +85,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/2850-thickbox_default/dynamic-cuchillo-p-carne-5-x12-art-22300-905.jpg",
     "stock": 8,
     "price": 990,
-    "categoryId": 7
+    "categoryId": 3
 },
 {
     "name": "cubiertos",
@@ -93,7 +93,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/7154-thickbox_default/laguna-jgo-cubiertos-24pzas-art-66906-840.jpg",
     "stock": 6,
     "price": 3700,
-    "categoryId": 7
+    "categoryId": 3
 },
 {
     "name": "botella",
@@ -101,7 +101,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/902-thickbox_default/botella-vidrio-relieve-rombo-65x65x22cm-art-300256.jpg",
     "stock": 12,
     "price": 200,
-    "categoryId": 7
+    "categoryId": 4
 },
 {
     "name": "dispenser",
@@ -109,7 +109,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/5797-thickbox_default/dispenser-de-vidrio-country-style-35l-art-13302.jpg",
     "stock": 4,
     "price": 1200,
-    "categoryId": 7
+    "categoryId": 4
 },
 {
     "name": "fransco",
@@ -117,7 +117,7 @@ let productos = [
     image: "https://www.rioshopdeco.com.ar/1289-thickbox_default/frasco-vidrio-cuadrado-c-manija-de-cuerda-16x16x18cm-art-400348.jpg",
     "stock": 7,
     "price": 700,
-    "categoryId": 7
+    "categoryId": 4
 },
 {
     "name": "batidor de cocina",
@@ -125,7 +125,7 @@ let productos = [
     "image": "https://www.rioshopdeco.com.ar/3888-thickbox_default/batidor-metalico-35cm-art-p1232809.jpg",
     "stock": 7,
     "price": 200,
-    "categoryId": 8
+    "categoryId": 5
 },
 {
     "name": "mortero",

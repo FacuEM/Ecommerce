@@ -3,6 +3,9 @@
   padding: 3px;
 }
 
+.jumbotron {
+  margin-top: 100px;
+}
 .car-img {
   height: 16rem;
   width: 16rem;
@@ -18,21 +21,33 @@
   height: 10rem;
   width: 10rem;
 }
+.orderProd {
+  min-width: 15rem;
+}
 
+#orders-img {
+  max-height: 15rem;
+  max-width: 140vh;
+}
+
+#ordersTitle {
+  margin: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
 .cardw {
   height: 23rem;
   margin-top: 20px;
   width: 20rem;
 }
-
+.orders {
+  width: 130vh;
+  margin: 20px;
+}
 .cardCar {
   height: 26rem;
   margin-top: 20px;
   width: 20rem;
-}
-
-.boton {
-  margin-left: 5px;
 }
 
 .categories {

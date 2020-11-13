@@ -32,8 +32,9 @@ class Product extends Component {
     if(this.props.userId){
       this.props.AddProductCar(this.props.userId,prodId)
     }else{
-      const prueba=JSON.stringify(this.props.product)
-      localStorage.setItem(`${this.props.product.name}`, prueba)
+      const prod={...this.props.product,units:1}
+      const prueba=JSON.stringify(prod)
+      localStorage.setItem(`${prod.name}`, prueba)
     }
     
     this.setState({addToCart : true})

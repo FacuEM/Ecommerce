@@ -10,6 +10,7 @@ export const FETCH_SELECT_ORDERS = "FETCH_SELECT_ORDERS";
 export const FETCH_ORDER = "FETCH_ORDER";
 export const FETCH_CAR_PRODUCTS = "FETCH_CAR_PRODUCTS";
 export const CHECKOUT_ORDER = "CHECKOUT_ORDER";
+export const LOGAUT_CAR = 'LOGAUT_CAR'
 
 // User
 export const LOGIN_USER = "LOGIN_USER";

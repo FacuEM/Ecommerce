@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import {fetchProducts} from '../../redux/actionCreators/searchCreator'
 import Navbar from '../components/Navbar'
 import {logout} from "../../redux/actionCreators/userValidation"
+import {logautCar} from '../../redux/actionCreators/car'
 
 class NavbarContainer extends React.Component {
   constructor() {
@@ -29,6 +30,7 @@ hanledValue(value){
 
 clickLogout(){
   this.props.logout()
+  this.props.logautCar()
   this.props.history.push("/")
   }
 
@@ -59,7 +61,8 @@ const mapDispatchToProps = function(dispatch,ownProps){
   return {
     history:ownProps.history, //objeto proporcionado por react en el main para poder redireccionar
     fetchProducts : (products) => dispatch(fetchProducts(products)),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    logautCar:()=>dispatch(logautCar())
   }
 
 }

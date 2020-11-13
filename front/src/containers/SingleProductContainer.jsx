@@ -44,19 +44,11 @@ class Product extends Component {
     return (
       <div>
         <SingleProduct
-<<<<<<< HEAD
-         pText = {this.state.addToCart}
-         productSelected = {this.props.product} 
-         addProdudHandler={this.addProdudHandler}
-         ratingAvg={this.ratingAvg}
-         reviews={this.props.reviews}
-=======
           pText={this.state.addToCart}
           productSelected={this.props.product}
           addProdudHandler={this.addProdudHandler}
           ratingAvg={this.ratingAvg}
           reviews={this.props.reviews}
->>>>>>> a1fd45f5650f1bb707082c359285f49fb7694cd4
         />
         <ReviewFormContainer id={this.props.id} />
       </div>

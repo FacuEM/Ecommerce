@@ -2,7 +2,7 @@ import {
   FETCH_ORDERS,
   FETCH_ORDER,
   FETCH_CAR_PRODUCTS,
-  FETCH_ADMIN_PRODUCTS,
+  LOGAUT_CAR,
 } from "../constants";
 
 const initialState = {
@@ -19,6 +19,8 @@ export default (state = initialState, action) => {
       return { ...state, selectOrder: action.orders };
     case FETCH_CAR_PRODUCTS:
       return { ...state, carProducts: action.products };
+    case LOGAUT_CAR:
+      return { ...state, carProducts:[] };
     default:
       return state;
   }

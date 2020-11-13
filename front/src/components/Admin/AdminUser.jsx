@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   upgradeUser,
@@ -8,7 +8,6 @@ import {
 } from "../../../redux/actionCreators/adminCreator";
 
 import { Table, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 class AdminUser extends Component {
   constructor(props) {
@@ -36,17 +35,28 @@ class AdminUser extends Component {
                 return (
                   <tr key={user.id}>
                     <td>{user.id}</td>
+                    <Link to={`/admin/orders/${user.id}`}>
+                      <td>
+                        <Button variant="dark">Orders</Button>
+                      </td>
+                    </Link>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.type ? "admin" : "not admin"}</td>
                     {user.type ? (
-                      <button onClick={() => this.props.downgradeUser(user.id)}>
+                      <Button
+                        variant="dark"
+                        onClick={() => this.props.downgradeUser(user.id)}
+                      >
                         Downgrade user
-                      </button>
+                      </Button>
                     ) : (
-                      <button onClick={() => this.props.upgradeUser(user.id)}>
+                      <Button
+                        variant="dark"
+                        onClick={() => this.props.upgradeUser(user.id)}
+                      >
                         Upgrade user
-                      </button>
+                      </Button>
                     )}
                   </tr>
                 );

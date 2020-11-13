@@ -3,20 +3,25 @@ import { connect } from "react-redux"
 import {fetchCarProducts,removeProductCar,updateCarProducts} from "../../redux/actionCreators/car"
 import Cart from "../components/Cart"
 
-const productLocalStore=[]
-for(let produc in localStorage){
-    if(produc === "length") break
-    const p=JSON.parse(localStorage.getItem(produc))
-    p.units=1
-    productLocalStore.push(p)
+const parseLocalStore= ()=>{
+    const productLocalStore=[]
+    for(let produc in localStorage){
+      if(produc === "length") break
+      const p=JSON.parse(localStorage.getItem(produc))
+      productLocalStore.push(p)
+  }
+  return productLocalStore
 }
-console.log("aqui",productLocalStore)
+const productLocalStore=parseLocalStore()
+
+
 class CarContainer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      productLocalStore : productLocalStore
+      productLocalStore : productLocalStore,
+      total:0
     }
       this.removeHandler=this.removeHandler.bind(this)
       this.unitsHandler=this.unitsHandler.bind(this)
@@ -25,19 +30,19 @@ class CarContainer extends React.Component {
     } 
     
     componentDidMount(){
+      console.log("didmount carcontainer")
+      let total=0
+        const productLocalStore=parseLocalStore()
         this.props.fetchCarProducts(this.props.user.id)
-        const productLocalStore=[]
-        for(let produc in localStorage){
-            if(produc === "length") break
-            const p=JSON.parse(localStorage.getItem(produc))
-            p.units=1
-            productLocalStore.push(p)
+        if(productLocalStore[0]){
+            total=productLocalStore.reduce((x,y)=>x+(y.units*y.price),0)
         }
-        this.setState({productLocalStore})
+        this.setState({productLocalStore,total})
     }
 
+    
+    
   removeHandler(userId,pordID) {
-
     this.props.removeProductCar(userId,pordID)
   }
 
@@ -46,14 +51,9 @@ class CarContainer extends React.Component {
   }
   eventRemove (name){
     localStorage.removeItem(name)
-    const productLocalStore=[]
-    for(let produc in localStorage){
-    if(produc === "length") break
-    const p=JSON.parse(localStorage.getItem(produc))
-    p.units=1
-    productLocalStore.push(p)
-    }
-    this.setState({productLocalStore})
+    const productLocalStore=parseLocalStore()
+    const total=productLocalStore.reduce((x,y)=>x+(y.units*y.price),0)
+    this.setState({productLocalStore,total})
   }
   eventUnits(id,n){
     this.state.productLocalStore.forEach(prod=>{
@@ -62,14 +62,9 @@ class CarContainer extends React.Component {
             localStorage.setItem(prod.name,JSON.stringify(prod))
         }
     })
-    const productLocalStore=[]
-    for(let produc in localStorage){
-    if(produc === "length") break
-    const p=JSON.parse(localStorage.getItem(produc))
-    p.units=1
-    productLocalStore.push(p)
-    }
-    this.setState({productLocalStore})
+    const productLocalStore=parseLocalStore()
+    const total=productLocalStore.reduce((x,y)=>x+(y.units*y.price),0)
+    this.setState({productLocalStore,total})
   }
 
   render() {
@@ -83,6 +78,7 @@ class CarContainer extends React.Component {
       productLocalStore={this.state.productLocalStore}
       eventRemove={this.eventRemove}
       eventUnits={this.eventUnits}
+      total={this.state.total}
       />
     );
   }

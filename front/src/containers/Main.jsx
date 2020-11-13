@@ -28,7 +28,7 @@ import AdminProductsUpdate from "../components/Admin/AdminProductsUpdate";
 import AdminCategories from "../components/Admin/AdminCategories";
 import AdminCategoryUpdate from "../components/Admin/AdminCategoryUpdate";
 import AdminOrders from "../components/Admin/AdminOrders";
-import { Fragment } from "react";
+import AdminUserOrders from "../components/Admin/AdminUserOrders";
 
 class Main extends React.Component {
   constructor(props) {
@@ -90,6 +90,11 @@ class Main extends React.Component {
                     component={AdminCategoryUpdate}
                   />
                   <Route exact path="/admin/orders" component={AdminOrders} />
+                  <Route
+                    exact
+                    path="/admin/orders/:id"
+                    component={AdminUserOrders}
+                  />
                 </div>
               ) : null}
 

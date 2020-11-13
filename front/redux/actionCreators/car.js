@@ -1,9 +1,9 @@
 import axios from "axios";
 import {
   FETCH_ORDERS,
-  FETCH_SELECT_ORDERS,
   FETCH_ORDER,
   FETCH_CAR_PRODUCTS,
+  LOGAUT_CAR
 } from "../constants";
 
 //busca una orden de compra (carrito) mediante el id del usuario logueado
@@ -23,8 +23,16 @@ const fetchOrdersCreator = orders => ({
     orders
 })
 
+const logautCarCreator = orders => ({
+  type:LOGAUT_CAR,
+  orders
+})
 
 
+
+export const logautCar = () => dispatch =>{
+  dispatch(logautCarCreator());
+};
 
 
 export const fetchOrder = userId => dispatch =>{
@@ -41,6 +49,7 @@ export const fetchOrders = userId => dispatch =>{
 }
 
 export const fetchCarProducts = userId => dispatch =>{
+  console.log("fetchCarProducts")
     axios.get(`/api/car/${userId}`)
     .then((res) => res.data)
     .then((products) => dispatch(fetchCarProductsCreator(products)));
@@ -64,8 +73,8 @@ export const updateStockProducts = (prodId, data) => (dispatch) => {
   axios.put(`/api/admin/products/${prodId}/editProduct`, data);
 };
 
-export const AddProductCar = (userId, prodId) => (dispatch) => {
-  axios.put(`/api/car/add/${userId}/${prodId}`);
+export const AddProductCar = (userId, prodId,data) => (dispatch) => {
+  axios.post(`/api/car/add/${userId}/${prodId}`,data);
 };
 
 export const removeProductCar = (userId, prodId) => (dispatch) => {

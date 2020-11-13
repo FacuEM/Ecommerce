@@ -88,7 +88,7 @@ class AdminProducts extends Component {
         <CardDeck>
           {this.props.products && this.props.products.length == 0 ? <Alert variant={'info'}>No hay resultados</Alert> : null}
           {this.props.products && this.props.products.map(product => (
-            <Link to={`/products/${product.id}`} key={product.id}>
+           
               <Card className='cardw' key={product.id}>
                 <Card.Img className='card-img' variant="top" src={product.image} />
                 <Card.Body>
@@ -99,9 +99,9 @@ class AdminProducts extends Component {
                   <Button variant='light'onClick={() => this.handleDelete(product.id)}>Delete</Button>
                 </Card.Footer>
               </Card>
-            </Link>
+         
           ))}
-        </CardDeck>);
+        </CardDeck>
       </div>
     );
   }

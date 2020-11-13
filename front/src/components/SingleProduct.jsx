@@ -3,7 +3,7 @@ import { Basket } from 'react-bootstrap-icons';
 import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap'
 import {FaStar} from "react-icons/fa"
 
-export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
+export default ({ pText, productSelected, addProdudHandler,ratingAvg, reviews}) => {
   return (
     <div>
       {productSelected.id &&
@@ -29,7 +29,7 @@ export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
                   <strong>Precio:</strong> {`$${productSelected.price},00`}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <strong>Rating:</strong> {[...Array (ratingAvg())].map((star) =>{
+                  <strong>Rating:</strong> {reviews.length > 0 ? [...Array (ratingAvg())].map((star) =>{
                     return( 
                       <label>
                         <FaStar 
@@ -37,7 +37,7 @@ export default ({ pText, productSelected, addProdudHandler,ratingAvg}) => {
                           color={"#ffc107"}/>
                       </label>
                                 )
-                                })}
+                                }): 'No hay reviews'}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button variant="dark" onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>

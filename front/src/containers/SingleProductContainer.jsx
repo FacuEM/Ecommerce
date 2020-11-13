@@ -48,6 +48,7 @@ class Product extends Component {
          productSelected = {this.props.product} 
          addProdudHandler={this.addProdudHandler}
          ratingAvg={this.ratingAvg}
+         reviews={this.props.reviews}
         />
         <ReviewFormContainer id={this.props.id}/>
       </div>

@@ -28,14 +28,14 @@ export default ({user,products,removeHandler,unitsHandler,productLocalStore,even
                     <Col xs={4}>
                     <Image className="car-img2" src={prod.product ? prod.product.image : prod.image}  rounded />
                     </Col>
-                    <Col xs={8}>
-                    <ListGroup variant="flush">
+                    <Col xs={8} >
+                    <ListGroup variant="flush" className='columnaCarrito'>
                     <ListGroup.Item>Producto: {prod.name}</ListGroup.Item>
                     <ListGroup.Item>Precio: {prod.price}</ListGroup.Item>
                     <ListGroup.Item>Cantidad: {prod.units}
                     <Form.Control
                         as="select"
-                        className="mr-sm-2"
+                        className="mr-sm-2 "
                         id="inlineFormCustomSelect"
                         custom
                         onClick={e=>

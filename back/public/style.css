@@ -24,6 +24,17 @@
 .orderProd {
   min-width: 15rem;
 }
+.columnaCarrito {
+  width: 100%;
+}
+.custom-select {
+  display: inline;
+  width: 5% !important;
+  margin-left: 10px;
+}
+.addCar {
+  margin: 5px;
+}
 
 #orders-img {
   max-height: 15rem;
@@ -137,5 +148,5 @@ body {
   margin-bottom: 40px;
   text-align: center;
   font-size: 16px;
-  color: #4f000b;
+  color: #17a2b8;
 }

@@ -47,18 +47,12 @@ export default ({
                     : "No hay reviews"}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button
-                    variant="dark"
-                    onClick={() => addProdudHandler(productSelected.id)}
-                  >
-                    Agregar al carrito <Basket />
-                  </Button>
-                  <br />
-                  {pText ? (
-                    <Button variant="success" disabled>
-                      {productSelected.name} agregado al carrito.
-                    </Button>
-                  ) : null}
+                <Button variant="outline-info" disabled={productSelected.stock ? false : true}
+                  onClick={() => addProdudHandler(productSelected.id)}>Agregar al carrito <Basket /></Button>
+                  <br/>
+                   {pText ? <Button variant="success" disabled className='addCar'>
+                              {productSelected.name} agregado al carrito.
+                            </Button> : null}
                 </ListGroup.Item>
               </ListGroup>
             </Col>

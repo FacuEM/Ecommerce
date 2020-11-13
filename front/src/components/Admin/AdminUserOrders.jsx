@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 import { connect } from "react-redux";
-import 
-  {fetchAdminUserOrders}
- from "../../../redux/actionCreators/adminCreator";
+import { fetchAdminUserOrders } from "../../../redux/actionCreators/adminCreator";
 
 class AdminUserOrders extends Component {
   constructor(props) {
@@ -11,25 +10,34 @@ class AdminUserOrders extends Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.fetchAdminUserOrders(this.props.id)
+    this.props.fetchAdminUserOrders(this.props.id);
   }
   render() {
     return (
-      <div>
-       {this.props.orders &&
+      <CardGroup>
+        {this.props.orders &&
           this.props.orders.map((order) => {
             return (
               <div key={order.id}>
-                <h2>Order Id: {order.id}</h2>
-                <p>Direccion: {order.direccion}</p>
-                <p>Total: {order.total}</p>
-                <ul>
-            {order.carproducts.map((prod) => <li>{prod.name}</li>)}
-                </ul>
+                <Card border="dark" style={{ width: "18rem" }}>
+                  <Card.Header>Nro de orden : {`${order.id}`}</Card.Header>
+                  <Card.Text>Direccion : {`${order.direccion}`}</Card.Text>
+                  <Card.Title>Total : {`${order.total}`}</Card.Title>
+                  <Card.Text>
+                    Productos :
+                    {
+                      <ul>
+                        {order.carproducts.map((prod) => (
+                          <li>{prod.name}</li>
+                        ))}
+                      </ul>
+                    }
+                  </Card.Text>
+                </Card>
               </div>
             );
           })}
-      </div>
+      </CardGroup>
     );
   }
 }
@@ -40,12 +48,11 @@ const maptStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch,ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    id:ownProps.match.params.id,
+    id: ownProps.match.params.id,
     fetchAdminUserOrders: (id) => dispatch(fetchAdminUserOrders(id)),
-    
- } 
-}
+  };
+};
 
 export default connect(maptStateToProps, mapDispatchToProps)(AdminUserOrders);

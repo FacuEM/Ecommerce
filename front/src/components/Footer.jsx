@@ -18,7 +18,7 @@ export default ({}) => (
             </div>
 
             <div className="creado-por">
-                <p>Plataforma 5</p>
+                <p>Proyecto ECOMMERCE - Plataforma 5</p>
             </div>
     </footer>
   );

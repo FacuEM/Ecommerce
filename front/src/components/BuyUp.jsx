@@ -60,7 +60,7 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
                 </Form.Row>
 
             <Form.Group id="formGridCheckbox">
-                <Form.Check type="checkbox" label="seguro que quieres gastar tanta guita?" />
+                <Form.Check type="checkbox" label="seguro que quieres gastar tanta guita?" required/>
             </Form.Group>
             <OverlayTrigger
                 placement="bottom"

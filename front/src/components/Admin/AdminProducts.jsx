@@ -11,7 +11,7 @@ import {
   Alert,
   Form,
   Button,
-  
+  ListGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -145,9 +145,11 @@ class AdminProducts extends Component {
           ) : null}
           {this.props.products &&
             this.props.products.map((product) => (
-            
-                <Card style={{ width: "18rem", color: "black" }} key={product.id}>
+              <Link to={`/products/${product.id}`} key={product.id}>
+                <Card style={{ width: "18rem" }} key={product.id}>
+                  
                   <Card.Img variant="top" src={product.image} />
+                  
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                   </Card.Body>
@@ -160,15 +162,16 @@ class AdminProducts extends Component {
                     <Button
                       variant="light"
                       onClick={() => this.handleDelete(product.id)}
-                    >
+                    ><Link to="/admin/products">
                       Delete
+                      </Link>
                     </Button>
                   </Card.Body>
                 </Card>
-            
+           </Link>
             ))}
         </CardDeck>
-      
+     
       </div>
     );
   }

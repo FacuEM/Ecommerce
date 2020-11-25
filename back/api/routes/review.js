@@ -5,7 +5,7 @@ const { Review, User, Product } = require("../../models");
 router.post("/addReview/:productId", (req, res) => {
   Review.create(req.body)
     .then((review) => {
-      return review.setUser(req.body);
+      return review.setUser(req.user.id);
     })
     .then((review) => {
       return review.setProduct(req.params.productId);

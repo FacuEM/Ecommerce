@@ -25,7 +25,7 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
                 <Form.Row>
                     <Form.Group as={Col} >
                     <Form.Label>Payment method</Form.Label>
-                    <Form.Control id='metodo' as="select" defaultValue={metodo} onChange={handleChange}>
+                    <Form.Control id='metodo' as="select" defaultValue={metodo} onChange={handleChange} required>
                         <option>Cash</option>
                         <option>Creditcar</option>
                     </Form.Control>
@@ -39,23 +39,23 @@ export default ({complete,products,handleSubmit,handleChange,direccion,metodo,ci
 
                 <Form.Group >
                     <Form.Label>Address</Form.Label>
-                    <Form.Control placeholder="1234 Main St" id='direccion' value={direccion} onChange={handleChange} />
+                    <Form.Control placeholder="1234 Main St" id='direccion' value={direccion} onChange={handleChange} required/>
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} >
                     <Form.Label>City</Form.Label>
-                    <Form.Control id='city' value={city} onChange={handleChange}/>
+                    <Form.Control id='city' value={city} onChange={handleChange} required/>
                     </Form.Group>
 
                     <Form.Group as={Col} >
                     <Form.Label>State</Form.Label>
-                    <Form.Control id='state' value={state} onChange={handleChange} />
+                    <Form.Control id='state' value={state} onChange={handleChange} required/>
                     </Form.Group>
 
                     <Form.Group as={Col} >
                     <Form.Label>Zip</Form.Label>
-                    <Form.Control id='zip' value={zip} onChange={handleChange}/>
+                    <Form.Control id='zip' value={zip} onChange={handleChange} required/>
                     </Form.Group>
                 </Form.Row>
 
